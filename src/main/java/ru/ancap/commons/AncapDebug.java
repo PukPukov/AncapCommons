@@ -6,7 +6,7 @@ public class AncapDebug {
     // удалять все использования этого класса после завершения дебага
 
     public static void debug(Object object) {
-        System.out.println("" + object);
+        System.out.println(object);
     }
     
     public static void debug(Object object, Object... objects) {
@@ -18,7 +18,7 @@ public class AncapDebug {
     }
 
     public static void permanentDebug(Object object) {
-            System.out.println(""+object);
+        System.out.println(object);
     }
 
 }

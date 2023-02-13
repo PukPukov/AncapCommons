@@ -1,6 +1,4 @@
-package ru.ancap.util.resource;
-
-import java.io.InputStream;
+package ru.ancap.commons.resource;
 
 public interface ResourceSource<T> {
 

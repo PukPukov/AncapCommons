@@ -1,4 +1,4 @@
-package ru.ancap.util.resource;
+package ru.ancap.commons.resource;
 
 import java.io.InputStream;
 
