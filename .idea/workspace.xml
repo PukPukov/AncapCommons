@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/ImmutableWithList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/MutableWithList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/WithList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceExtractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,23 +28,26 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2LDSqLfE9vX8tu6KOGhV0EB1Li1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/dev/projects/lib/AncapCommons/src/main/java/ru/ancap/commons/resource&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/projects/dev/projects/lib/AncapCommons/src/main/java/ru/ancap/commons"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons\resource" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons" />
-      <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ru.ancap.commons" />
