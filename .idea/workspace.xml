@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/Cache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/CacheMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Logic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/ConstantPattern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/MultiPattern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/Pattern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/radix/PrefixNumberPattern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/radix/RadixProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/AncapDebug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/AncapDebug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/HandTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,17 +47,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/dev/sources/lib/AncapCommons",
+    "last_opened_file_path": "D:/projects/dev/sources/lib/AncapCommons/src/main/java/ru/ancap/commons/pattern",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\projects\dev\sources\lib\AncapCommons\src\main\java\ru\ancap\commons\pattern" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons\resource" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.ancap.commons.pattern" />
+      <recent name="ru.ancap.commons.radix" />
       <recent name="ru.ancap.commons" />
     </key>
   </component>
