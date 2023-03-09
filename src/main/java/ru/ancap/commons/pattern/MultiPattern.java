@@ -7,14 +7,14 @@ import java.util.List;
 @AllArgsConstructor
 public class MultiPattern implements Pattern {
     
-    private final List<Pattern> toComply;
+    private final List<Pattern> variants;
     
     @Override
     public boolean match(String string) {
-        for (Pattern pattern : this.toComply) {
-            if (!pattern.match(string)) return false;
+        for (Pattern pattern : this.variants) {
+            if (pattern.match(string)) return true;
         }
-        return true;
+        return false;
     }
     
 }
