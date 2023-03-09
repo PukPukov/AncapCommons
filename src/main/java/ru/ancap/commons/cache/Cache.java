@@ -14,6 +14,10 @@ public class Cache<T> {
     
     public Cache() { this(99999999999L); }
 
+    public T get() {
+        return this.get(null);
+    }
+
     public T get(Supplier<T> ifExpired) {
         if (this.lastUpdateTime > System.currentTimeMillis() - this.cacheValidity) return this.cache;
         this.cache = ifExpired.get();

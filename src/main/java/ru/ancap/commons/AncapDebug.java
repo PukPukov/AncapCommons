@@ -1,7 +1,7 @@
 package ru.ancap.commons;
 
 /**
- * Deprecated, transferred to ru.ancap.commons.debug <br>
+ * Deprecated, use {@link ru.ancap.commons.debug} <br>
  * Will be removed with the time of next breaking-change update of AncapFramework
  */
 @Deprecated(forRemoval = true)
