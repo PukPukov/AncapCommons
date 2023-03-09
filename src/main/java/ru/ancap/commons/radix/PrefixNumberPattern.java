@@ -16,10 +16,10 @@ public class PrefixNumberPattern implements Pattern, RadixProvider {
     @Override
     public Integer radix(String string) {
         return this.radixCache.get(string, () -> {
-            if (string.startsWith("0b")) return 2;
-            else if (string.startsWith("0x")) return 16;
-            else if (string.startsWith("0")) return 8;
-            else if (Logic.completes(() -> Integer.parseInt(string, 10))) return 10;
+            if      (string.startsWith("0b") && Logic.completes(() -> Integer.parseInt(string, 2)))  return 2;
+            else if (string.startsWith("0x") && Logic.completes(() -> Integer.parseInt(string, 16))) return 16;
+            else if (string.startsWith("0")  && Logic.completes(() -> Integer.parseInt(string, 8)))  return 8;
+            else if (                           Logic.completes(() -> Integer.parseInt(string, 10))) return 10;
             return null;
         });
     }
