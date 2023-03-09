@@ -1,4 +1,4 @@
-package ru.ancap.commons.test;
+package ru.ancap.commons.debug;
 
 public class AncapDebug {
 
