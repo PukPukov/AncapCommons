@@ -14,6 +14,10 @@ public class CacheMap<K, T> {
     private final Map<K, Cache<T>> cache = new HashMap<>();
 
     public CacheMap() { this(99999999999L); }
+    
+    public T get(K key) {
+        return this.get(key, null);
+    }
 
     public T get(K key, Supplier<T> ifExpired) {
         Cache<T> localCache = this.cache.get(key);

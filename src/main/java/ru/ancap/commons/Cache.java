@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 /**
  * <b>Deprecated</b>, use {@link ru.ancap.commons.cache.Cache}
  */
-@Deprecated
+@Deprecated(forRemoval = true)
 @RequiredArgsConstructor
 public class Cache<T> {
     
