@@ -1,5 +1,10 @@
-package ru.ancap.commons.debug;
+package ru.ancap.commons;
 
+/**
+ * Deprecated, transferred to ru.ancap.commons.debug <br>
+ * Will be removed with the time of next breaking-change update of AncapFramework
+ */
+@Deprecated(forRemoval = true)
 public class AncapDebug {
 
     // Класс для того, чтобы оставлять дебаг мессаджи через метод, входящий в него и потом через средства Intellij IDEA

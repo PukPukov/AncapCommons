@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/ImmutableWithList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/MutableWithList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/WithList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/Cache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/CacheMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/AncapDebug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/AncapDebug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/HandTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +22,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -40,7 +46,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/dev/projects/lib/AncapCommons/src/main/java/ru/ancap/commons"
+    "last_opened_file_path": "D:/projects/dev/sources/lib/AncapCommons",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -82,4 +89,14 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="" />
+      <created>1677717557008</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677717557008</updated>
+    </task>
+    <servers />
+  </component>
 </project>
