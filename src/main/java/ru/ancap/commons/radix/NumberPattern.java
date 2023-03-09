@@ -4,7 +4,7 @@ import ru.ancap.commons.Logic;
 import ru.ancap.commons.cache.CacheMap;
 import ru.ancap.commons.pattern.Pattern;
 
-public class PrefixNumberPattern implements Pattern, RadixProvider {
+public class NumberPattern implements Pattern, RadixProvider {
 
     @Override
     public boolean match(String string) {
