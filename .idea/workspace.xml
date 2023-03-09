@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/cache/CacheMapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/cache/CacheTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/radix/NumberPatternTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/Cache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/CacheMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/CacheMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/radix/NumberPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/radix/NumberPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/MultiPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/MultiPattern.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
