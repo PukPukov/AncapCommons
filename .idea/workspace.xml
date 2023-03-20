@@ -5,14 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/cache/AncapDebugTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/AncapDebug.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/CutoffCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/CutoffCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/MeteredTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/MeteredTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/Cache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/Cache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/CacheMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/cache/CacheMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/AncapDebug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/debug/AncapDebug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/ConstantPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/ConstantPattern.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/MultiPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/pattern/MultiPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/radix/NumberPattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/radix/NumberPattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/time/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/time/Day.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/ImmutableWithList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/ImmutableWithList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/MutableWithList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/MutableWithList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -35,16 +54,16 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/projects/dev/sources/lib/AncapCommons/src/main/java/ru/ancap/commons/pattern",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/dev/sources/lib/AncapCommons/src/main/java/ru/ancap/commons/pattern&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\dev\sources\lib\AncapCommons\src\main\java\ru\ancap\commons\pattern" />
@@ -58,7 +77,20 @@
       <recent name="ru.ancap.commons" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NumberPatternTest.test">
+  <component name="RunManager" selected="Application.AncapDebugTest">
+    <configuration name="AncapDebugTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.ancap.commons.cache.AncapDebugTest" />
+      <module name="AncapCommons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ancap.commons.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CacheMapTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AncapCommons" />
       <extension name="coverage">
@@ -151,6 +183,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AncapDebugTest" />
         <item itemvalue="JUnit.NumberPatternTest.test" />
         <item itemvalue="JUnit.CacheMapTest.testExpired" />
         <item itemvalue="JUnit.CacheTest.test" />

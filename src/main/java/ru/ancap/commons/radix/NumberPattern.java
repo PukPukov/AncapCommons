@@ -1,9 +1,12 @@
 package ru.ancap.commons.radix;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import ru.ancap.commons.Logic;
 import ru.ancap.commons.cache.CacheMap;
 import ru.ancap.commons.pattern.Pattern;
 
+@ToString @EqualsAndHashCode
 public class NumberPattern implements Pattern, RadixProvider {
 
     @Override

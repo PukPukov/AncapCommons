@@ -1,10 +1,13 @@
 package ru.ancap.commons.cache;
 
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor
+@ToString @EqualsAndHashCode
 public class Cache<T> {
 
     private final long cacheValidity;

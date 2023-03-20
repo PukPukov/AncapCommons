@@ -1,11 +1,14 @@
 package ru.ancap.commons.withlist;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Delegate;
 
 import java.util.List;
 
 @AllArgsConstructor
+@ToString @EqualsAndHashCode
 public class MutableWithList<T> implements WithList<T> {
 
     @Delegate
