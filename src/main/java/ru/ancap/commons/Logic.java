@@ -1,5 +1,9 @@
 package ru.ancap.commons;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString @EqualsAndHashCode
 public class Logic {
     
     public static boolean completes(Unstable unstable) {

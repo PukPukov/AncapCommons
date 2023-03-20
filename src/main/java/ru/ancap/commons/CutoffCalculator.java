@@ -1,13 +1,15 @@
 package ru.ancap.commons;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+@ToString @EqualsAndHashCode
 public class CutoffCalculator<T> {
     
     private final TreeSet<Cutoff<T>> set = new TreeSet<>();
@@ -23,22 +25,25 @@ public class CutoffCalculator<T> {
         Set<Cutoff<T>> cutoffSet = this.set.tailSet(new Cutoff<>(time, null), false);
         Set<T> pulledValues = new HashSet<>();
         for (Cutoff<T> cutoff : cutoffSet) {
-            pulledValues.add(cutoff.getValue());
+            pulledValues.add(cutoff.value());
         }
         return pulledValues;
     }
     
     @AllArgsConstructor
-    @Getter
+    @ToString @EqualsAndHashCode
     public static class Cutoff<T> implements Comparable<Cutoff<?>> {
         
         private final long time;
-        private final T value;
+        private final T    value;
 
         @Override
         public int compareTo(@NotNull CutoffCalculator.Cutoff<?> cutoff) {
             return Long.compare(this.time, cutoff.time);
         }
+        
+        public long time()  {return this.time; }
+        public T    value() {return this.value;}
         
     }
     

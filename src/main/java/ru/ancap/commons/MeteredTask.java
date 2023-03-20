@@ -1,11 +1,14 @@
 package ru.ancap.commons;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.Duration;
 import java.util.function.Consumer;
 
 @AllArgsConstructor
+@ToString @EqualsAndHashCode
 public class MeteredTask implements Runnable {
     
     private final Runnable onStart;
