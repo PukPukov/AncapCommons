@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/unsafe/Unsafe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/unsafe/UnsafeHandleStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/unsafe/Unsafe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/unsafe/UnsafeHandleStrategy.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,7 @@
       <list>
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -50,6 +50,10 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.ancap.commons.aware" />
+      <recent name="ru.ancap.commons.unsafe" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\dev\sources\lib\AncapCommons\src\main\java\ru\ancap\commons\pattern" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons" />
