@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/CutoffsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/Branch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/CutoffCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Cutoffs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +61,11 @@
       <recent name="D:\projects\dev\projects\lib\AncapCommons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.ancap.commons" />
       <recent name="ru.ancap.commons.exception" />
       <recent name="ru.ancap.commons.null_" />
       <recent name="ru.ancap.commons.pattern" />
       <recent name="ru.ancap.commons.radix" />
-      <recent name="ru.ancap.commons" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.CutoffsTest.on">
@@ -74,7 +73,7 @@
       <module name="AncapCommons" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ancap.commons.*" />
+          <option name="PATTERN" value="ru.ancap.commons.declarative.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
