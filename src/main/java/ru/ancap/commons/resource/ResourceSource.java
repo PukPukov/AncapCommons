@@ -4,7 +4,6 @@ import org.jetbrains.annotations.Nullable;
 
 public interface ResourceSource<T> {
 
-
     /**
      * Null if not found
      */

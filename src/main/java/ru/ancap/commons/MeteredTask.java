@@ -23,4 +23,5 @@ public class MeteredTask implements Runnable {
         long end = System.nanoTime();
         this.onEnd.accept(Duration.ofNanos(end-start));
     }
+    
 }

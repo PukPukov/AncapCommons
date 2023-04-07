@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/map/GuaranteedMapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Path.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/exception/Try.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Loop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/map/GuarantieMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/map/GuaranteedMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/MeteredTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/MeteredTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Branch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/exception/UnsafeThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/exception/UnsafeThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +66,15 @@
       <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons\resource" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.ancap.commons" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.ancap.commons.declarative" />
       <recent name="ru.ancap.commons.map" />
       <recent name="ru.ancap.commons" />
       <recent name="ru.ancap.commons.exception" />
       <recent name="ru.ancap.commons.null_" />
-      <recent name="ru.ancap.commons.pattern" />
     </key>
   </component>
   <component name="RunManager">
