@@ -12,13 +12,13 @@ import java.util.function.Supplier;
 
 @AllArgsConstructor
 @ToString @EqualsAndHashCode
-public class GuarantieMap<K, V> implements Map<K, V> {
+public class GuaranteedMap<K, V> implements Map<K, V> {
     
     @Delegate(excludes = LombokGetExclude.class)
     private final Map<K, V> base;
     private final Supplier<V> guarantor;
     
-    public GuarantieMap(Supplier<V> guarantor) {
+    public GuaranteedMap(Supplier<V> guarantor) {
         this(new HashMap<>(), guarantor);
     }
 
