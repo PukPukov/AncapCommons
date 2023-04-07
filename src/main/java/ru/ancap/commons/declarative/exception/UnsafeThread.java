@@ -1,4 +1,4 @@
-package ru.ancap.commons.exception;
+package ru.ancap.commons.declarative.exception;
 
 import org.jetbrains.annotations.NonBlocking;
 import org.jetbrains.annotations.Nullable;

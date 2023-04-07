@@ -1,4 +1,4 @@
-package ru.ancap.commons.declarative;
+package ru.ancap.commons.declarative.flow;
 
 public class Branch {
 
