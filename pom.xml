@@ -6,7 +6,7 @@
 
     <groupId>ru.ancap</groupId>
     <artifactId>AncapCommons</artifactId>
-    <version>1.8.3</version>
+    <version>1.8.4</version>
 
     <properties>
         <java.version>11</java.version>
