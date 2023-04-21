@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/Path.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/exception/Try.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Loop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Value.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/multithreading/WaitFor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/multithreading/WaitForTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/MeteredTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/MeteredTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/exception/UnsafeThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/exception/UnsafeThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/resource/ResourceSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/exception/Try.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/exception/Try.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/exception/UnsafeThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/exception/UnsafeThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Loop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Loop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,18 +65,69 @@
       <recent name="D:\projects\dev\projects\lib\AncapCommons\src\main\java\ru\ancap\commons\resource" />
       <recent name="D:\projects\dev\projects\lib\AncapCommons" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\dev\sources\lib\AncapCommons\src\main\java\ru\ancap\commons" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ru.ancap.commons" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.ancap.commons.declarative.flow" />
       <recent name="ru.ancap.commons.declarative" />
       <recent name="ru.ancap.commons.map" />
       <recent name="ru.ancap.commons" />
       <recent name="ru.ancap.commons.exception" />
-      <recent name="ru.ancap.commons.null_" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.WaitForTest.testMultipleGet">
+    <configuration name="WaitForTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AncapCommons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ancap.commons.multithreading.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ancap.commons.multithreading" />
+      <option name="MAIN_CLASS_NAME" value="ru.ancap.commons.multithreading.WaitForTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitForTest.testMultipleGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AncapCommons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ancap.commons.multithreading.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ancap.commons.multithreading" />
+      <option name="MAIN_CLASS_NAME" value="ru.ancap.commons.multithreading.WaitForTest" />
+      <option name="METHOD_NAME" value="testMultipleGet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WaitForTest.testTimes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AncapCommons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ancap.commons.multithreading.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ancap.commons.multithreading" />
+      <option name="MAIN_CLASS_NAME" value="ru.ancap.commons.multithreading.WaitForTest" />
+      <option name="METHOD_NAME" value="testTimes" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Install" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -104,6 +154,13 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.WaitForTest.testMultipleGet" />
+        <item itemvalue="JUnit.WaitForTest.testTimes" />
+        <item itemvalue="JUnit.WaitForTest.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
