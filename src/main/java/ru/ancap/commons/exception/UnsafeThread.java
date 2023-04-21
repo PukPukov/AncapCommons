@@ -1,4 +1,4 @@
-package ru.ancap.commons.declarative.exception;
+package ru.ancap.commons.exception;
 
 import org.jetbrains.annotations.NonBlocking;
 import org.jetbrains.annotations.Nullable;
@@ -30,4 +30,5 @@ public class UnsafeThread {
         void execute() throws Throwable;
         
     }
+    
 }

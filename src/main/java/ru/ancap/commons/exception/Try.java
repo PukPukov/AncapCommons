@@ -1,4 +1,4 @@
-package ru.ancap.commons.declarative.exception;
+package ru.ancap.commons.exception;
 
 public class Try {
     

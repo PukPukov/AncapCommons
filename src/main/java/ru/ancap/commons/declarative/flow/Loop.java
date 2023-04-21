@@ -1,6 +1,6 @@
 package ru.ancap.commons.declarative.flow;
 
-import ru.ancap.commons.declarative.exception.UnsafeThread;
+import ru.ancap.commons.exception.UnsafeThread;
 
 public class Loop {
     
