@@ -23,9 +23,7 @@ public class Cutoffs<T> {
     public List<T> from(long time) {
         Set<Cutoff<T>> cutoffSet = this.set.tailSet(new Cutoff<>(-1, time, null), false);
         List<T> pulledValues = new ArrayList<>();
-        for (Cutoff<T> cutoff : cutoffSet) {
-            pulledValues.add(cutoff.value());
-        }
+        for (Cutoff<T> cutoff : cutoffSet) pulledValues.add(cutoff.value());
         return pulledValues;
     }
     
@@ -55,7 +53,7 @@ public class Cutoffs<T> {
             return this.index == cutoff.index;
         }
 
-        @Override
+        @Override // я не просто так вручную написал hashCode, не менять
         public int hashCode() {
             return Objects.hash(this.index);
         }

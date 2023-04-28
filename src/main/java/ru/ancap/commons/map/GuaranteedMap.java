@@ -6,12 +6,13 @@ import lombok.ToString;
 import lombok.experimental.Delegate;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 
 @AllArgsConstructor
 @ToString @EqualsAndHashCode
+@Deprecated
 public class GuaranteedMap<K, V> implements Map<K, V> {
     
     @Delegate(excludes = LombokGetExclude.class)
@@ -19,7 +20,7 @@ public class GuaranteedMap<K, V> implements Map<K, V> {
     private final Supplier<V> guarantor;
     
     public GuaranteedMap(Supplier<V> guarantor) {
-        this(new HashMap<>(), guarantor);
+        this(new ConcurrentHashMap<>(), guarantor);
     }
 
     @Override
@@ -32,6 +33,6 @@ public class GuaranteedMap<K, V> implements Map<K, V> {
         return value;
     }
 
-    interface LombokGetExclude<T> { T get(Object key); }
+    private interface LombokGetExclude<T> { T get(Object key); }
     
 }
