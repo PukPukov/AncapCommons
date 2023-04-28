@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Super-simple event-bus. Written only to test the SafeMap.
+ * Super-simple event-bus.
  */
-public class SimpleEventBus<EVENT> implements Instructor<EVENT> {
+public class SimpleEventBus<EVENT> implements EventBus<EVENT> {
     
     private final List<Consumer<EVENT>> listeners = new ArrayList<>();
 
@@ -16,6 +16,7 @@ public class SimpleEventBus<EVENT> implements Instructor<EVENT> {
         this.listeners.add(consumer);
     }
     
+    @Override
     public void dispatch(EVENT event) {
         for (Consumer<EVENT> listener : this.listeners) {
             listener.accept(event);
