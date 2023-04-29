@@ -1,4 +1,4 @@
-package ru.ancap.commons.withlist;
+package ru.ancap.commons.list.with;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

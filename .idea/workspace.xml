@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/instructor/EventBus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/list/merge/MergeList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/instructor/SimpleEventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/instructor/SimpleEventBus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/declarative/flow/Loop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/exception/UnsafeThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/exception/UnsafeThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/ImmutableWithList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/list/with/ImmutableWithList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/MutableWithList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/list/with/MutableWithList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/withlist/WithList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/list/with/WithList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/cache/AncapDebugTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/cache/AncapDebugTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +28,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -78,7 +84,18 @@
       <recent name="ru.ancap.commons.exception" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Batch.install">
+    <configuration name="install" type="BatchConfigurationType" factoryName="Batch" temporary="true">
+      <module name="AncapCommons" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\projects\dev\sources\lib\AncapCommons" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="install.bat" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Install" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -105,6 +122,11 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Batch.install" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

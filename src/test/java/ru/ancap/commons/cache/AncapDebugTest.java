@@ -2,7 +2,7 @@ package ru.ancap.commons.cache;
 
 import ru.ancap.commons.debug.AncapDebug;
 import ru.ancap.commons.debug.HandTest;
-import ru.ancap.commons.withlist.ImmutableWithList;
+import ru.ancap.commons.list.with.ImmutableWithList;
 
 import java.util.List;
 
