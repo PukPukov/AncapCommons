@@ -1,4 +1,4 @@
-package ru.ancap.commons.withlist;
+package ru.ancap.commons.list.with;
 
 import java.util.List;
 

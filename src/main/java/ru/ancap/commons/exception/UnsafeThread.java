@@ -1,5 +1,7 @@
 package ru.ancap.commons.exception;
 
+import lombok.SneakyThrows;
+import org.jetbrains.annotations.Blocking;
 import org.jetbrains.annotations.NonBlocking;
 import org.jetbrains.annotations.Nullable;
 import ru.ancap.commons.null_.SafeNull;
@@ -23,6 +25,12 @@ public class UnsafeThread {
                 SafeNull.action(exceptionConsumer, notNull -> notNull.accept(throwable));
             }
         }).start();
+    }
+    
+    @Blocking
+    @SneakyThrows
+    public static void sleep(long millis) {
+        Thread.sleep(millis);
     }
 
     public interface Action {
