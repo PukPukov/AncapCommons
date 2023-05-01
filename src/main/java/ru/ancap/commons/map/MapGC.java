@@ -3,18 +3,14 @@ package ru.ancap.commons.map;
 import lombok.RequiredArgsConstructor;
 import ru.ancap.commons.instructor.Instructor;
 
-import java.util.function.Function;
+import java.util.Map;
 
 @RequiredArgsConstructor
 public class MapGC<K> {
     
-    public static <K> Function<Instructor<K>, MapGC<K>> FROM_INSTRUCTOR() {
-        return MapGC::new;
-    }
-    
     private final Instructor<K> logic;
 
-    public void add(SafeMap<K, ?> map) {
+    public void add(Map<K, ?> map) {
         this.logic.accept(map::remove);
     }
     
