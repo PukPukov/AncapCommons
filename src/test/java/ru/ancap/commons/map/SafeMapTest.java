@@ -20,7 +20,7 @@ public class SafeMapTest {
             .guaranteed(ArrayList::new)
             .collectGarbage( eventBus
                 .map(Object::toString)
-                .as(MapGC.FROM_INSTRUCTOR())
+                .as(MapGC::new)
             )
             .build();
         map.put("1", new ArrayList<>());
