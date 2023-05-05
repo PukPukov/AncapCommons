@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/map/MapGC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/map/MapGC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/map/SafeMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/map/SafeMapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/map/SafeMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/map/SafeMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

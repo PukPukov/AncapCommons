@@ -47,7 +47,7 @@ public class SafeMap<K, V> implements Map<K, V> {
         
     }
     
-    @Delegate(excludes = SafeMap.LombokGetExclude.class)
+    @Delegate(excludes = LombokExclude.class)
     private final Map<K, V> base;
     private final Function<K, V> getStrategy;
 
@@ -55,7 +55,15 @@ public class SafeMap<K, V> implements Map<K, V> {
     public @NotNull V get(Object key) {
         return this.getStrategy.apply((K) key);
     }
+    
+    @Override
+    public boolean containsKey(Object key) {
+        return this.base.containsKey(key);
+    }
 
-    private interface LombokGetExclude<T> { T get(Object key); }
+    private interface LombokExclude<T> {
+        T get(Object key);
+        boolean containsKey(Object key);
+    }
     
 }
