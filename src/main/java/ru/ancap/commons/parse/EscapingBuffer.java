@@ -1,5 +1,9 @@
 package ru.ancap.commons.parse;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString @EqualsAndHashCode
 public class EscapingBuffer {
     
     private boolean currentlyEscaped;

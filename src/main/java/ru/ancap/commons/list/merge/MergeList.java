@@ -1,10 +1,13 @@
 package ru.ancap.commons.list.merge;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.Delegate;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@ToString @EqualsAndHashCode
 public class MergeList<T> implements List<T> {
 
     @Delegate

@@ -1,13 +1,14 @@
 package ru.ancap.commons;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@ToString
+@ToString @EqualsAndHashCode
 public class Cutoffs<T> {
     
     private final TreeSet<Cutoff<T>> set = new TreeSet<>();
@@ -28,7 +29,7 @@ public class Cutoffs<T> {
     }
     
     @AllArgsConstructor
-    @ToString
+    @ToString /* @EqualsAndHashCode уже реализовано */
     public static class Cutoff<T> implements Comparable<Cutoff<?>> {
 
         private final int  index;
