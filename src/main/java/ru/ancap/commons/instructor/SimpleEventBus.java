@@ -1,5 +1,8 @@
 package ru.ancap.commons.instructor;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -7,6 +10,7 @@ import java.util.function.Consumer;
 /**
  * Super-simple event-bus.
  */
+@ToString @EqualsAndHashCode
 public class SimpleEventBus<EVENT> implements EventBus<EVENT> {
     
     private final List<Consumer<EVENT>> listeners = new ArrayList<>();

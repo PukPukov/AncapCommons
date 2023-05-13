@@ -1,7 +1,9 @@
 package ru.ancap.commons.map;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.Delegate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +15,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@ToString @EqualsAndHashCode
 public class SafeMap<K, V> implements Map<K, V> {
     
     public static <K, V> Builder<K, V> builder() { return new Builder<>(new ConcurrentHashMap<>()); }
