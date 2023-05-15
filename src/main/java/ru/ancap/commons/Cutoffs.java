@@ -2,6 +2,7 @@ package ru.ancap.commons;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 
@@ -9,12 +10,15 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ToString @EqualsAndHashCode
+@RequiredArgsConstructor
 public class Cutoffs<T> {
     
     private final TreeSet<Cutoff<T>> set = new TreeSet<>();
     private final AtomicInteger index = new AtomicInteger(0);
+    private final int size;
 
     public void mark(T t) {
+        if (this.set.size() >= this.size) this.set.pollFirst();
         this.set.add(new Cutoff<>(this.index.incrementAndGet(), System.currentTimeMillis(), t));
     }
 
