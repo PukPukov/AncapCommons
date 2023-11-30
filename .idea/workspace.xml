@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="Unsafe exception wrappers — @SneakyThrows to lambdas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/list/RangeListGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/list/RangeListGeneratorTest.java" afterDir="false" />
+    <list default="true" id="2771aea4-2fda-42b7-80d9-1707348d5916" name="Changes" comment="RangeListGenerator">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/ancap/commons/iterable/IterableToArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/ancap/commons/iterable/IterableToArrayTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.IterableToArrayTest.test.executor": "Run",
     "JUnit.RangeListGeneratorTest.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -91,7 +92,7 @@
       <recent name="ru.ancap.commons.exception" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RangeListGeneratorTest.test">
+  <component name="RunManager" selected="JUnit.IterableToArrayTest.test">
     <configuration name="install" type="BatchConfigurationType" factoryName="Batch" temporary="true">
       <module name="AncapCommons" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,11 +104,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IterableToArrayTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AncapCommons" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.ancap.commons.iterable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.ancap.commons.iterable" />
+      <option name="MAIN_CLASS_NAME" value="ru.ancap.commons.iterable.IterableToArrayTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RangeListGeneratorTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AncapCommons" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.ancap.commons.list.*" />
+          <option name="PATTERN" value="ru.ancap.commons.iterable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,6 +169,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IterableToArrayTest.test" />
         <item itemvalue="JUnit.RangeListGeneratorTest.test" />
       </list>
     </recent_temporary>
@@ -165,7 +183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677717557008</updated>
       <workItem from="1701316710214" duration="46000" />
-      <workItem from="1701316758098" duration="2283000" />
+      <workItem from="1701316758098" duration="4458000" />
     </task>
     <task id="LOCAL-00001" summary="Unsafe exception wrappers — @SneakyThrows to lambdas">
       <option name="closed" value="true" />
@@ -183,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701317951205</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="RangeListGenerator">
+      <option name="closed" value="true" />
+      <created>1701319358478</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701319358478</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +217,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Unsafe exception wrappers — @SneakyThrows to lambdas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unsafe exception wrappers — @SneakyThrows to lambdas" />
+    <MESSAGE value="RangeListGenerator" />
+    <option name="LAST_COMMIT_MESSAGE" value="RangeListGenerator" />
   </component>
 </project>
