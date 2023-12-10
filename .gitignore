@@ -34,3 +34,9 @@ replay_pid*
 .idea/workspace.xml
 target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 *.lst
+
+**/*.iml
+**/.idea
+**/.idea/
+**/target/
+**/dependency-reduced-pom.xml
