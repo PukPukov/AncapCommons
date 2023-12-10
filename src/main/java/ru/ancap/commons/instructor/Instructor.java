@@ -4,6 +4,13 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 public interface Instructor<TYPE> extends Consumer<Consumer<TYPE>> {
+
+    /**
+     * @since 1.8.20
+     */
+    default void subscribe(Consumer<TYPE> consumer) {
+        this.accept(consumer);
+    }
     
     default <ALTERNATIVE_TYPE> Instructor<ALTERNATIVE_TYPE> map(Function<TYPE, ALTERNATIVE_TYPE> mapFunction) {
         return alternativeTypeConsumer -> Instructor.this.accept(value -> alternativeTypeConsumer.accept(mapFunction.apply(value)));

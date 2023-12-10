@@ -1,19 +1,23 @@
 package ru.ancap.commons.instructor;
 
 import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 
 /**
  * Super-simple event-bus.
  */
 @ToString @EqualsAndHashCode
+@RequiredArgsConstructor
 public class SimpleEventBus<EVENT> implements EventBus<EVENT> {
     
-    private final List<Consumer<EVENT>> listeners = new ArrayList<>();
+    private final Collection<Consumer<EVENT>> listeners;
+
+    public SimpleEventBus() { this(new CopyOnWriteArrayList<>()); }
 
     @Override
     public void accept(Consumer<EVENT> consumer) {
