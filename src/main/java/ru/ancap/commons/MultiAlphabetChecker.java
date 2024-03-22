@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 /**
  * Should be instantiated for every check.
+ * Supports only Russian and Ukrainian, Latin, Greek, Hebrew and Georgian alphabets. Any other symbols will
+ * be considered as special characters, so additional checks should be created. 
  */
 public class MultiAlphabetChecker {
     
