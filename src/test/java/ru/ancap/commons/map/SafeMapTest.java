@@ -15,10 +15,10 @@ public class SafeMapTest {
     
     @Test
     public void test() {
-        SimpleEventBus<Integer> eventBus = new SimpleEventBus<>();
+        SimpleEventBus<Integer> deletions = new SimpleEventBus<>();
         SafeMap<String, List<String>> map = SafeMap.<String, List<String>>builder()
             .guaranteed(ArrayList::new)
-            .collectGarbage( eventBus
+            .collectGarbage( deletions
                 .map(Object::toString)
                 .as(MapGC::new)
             )
@@ -28,8 +28,8 @@ public class SafeMapTest {
         map.put("3", new Vector<>());
         map.put("4", new ArrayList<>());
         map.put("5", new ArrayList<>());
-        eventBus.dispatch(4);
-        eventBus.dispatch(5);
+        deletions.dispatch(4);
+        deletions.dispatch(5);
         assertEquals(3, map.size());
         assertDoesNotThrow(() -> map.get("6").add("some string"));
         assertEquals("some string", map.get("6").get(0));

@@ -8,18 +8,22 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
+/**
+ * Marker class to use it for leaving debug messages and easily find them with "find usages" in any IDE.
+ */
 @ToString @EqualsAndHashCode
 public class AncapDebug {
     
     public static Consumer<String> OUTPUT_CONSUMER = string -> System.out.println("DEBUG "+string);
-
-    // Класс для того, чтобы оставлять дебаг мессаджи через метод, входящий в него и потом через средства Intellij IDEA
-    // удалять все использования этого класса после завершения дебага
     
     public static void debug(@Nullable Object... objects) {
         StringBuilder debug = new StringBuilder();
-        for (Object object : objects) {
-            debug.append(" \"").append(stringValueOf(object)).append("\"");
+        for (int i = 0; i < objects.length; i++) {
+            Object object = objects[i];
+            if (i != 0) debug.append(" ");
+            debug.append("\"");
+            debug.append(stringValueOf(object));
+            debug.append("\"");
         }
         AncapDebug.soloDebug(new String(debug));
     }

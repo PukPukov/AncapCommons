@@ -11,7 +11,7 @@ public class MapGC<K> {
     private final Instructor<K> logic;
     
     public void add(Map<K, ?> map) {
-        this.logic.accept(map::remove);
+        this.logic.subscribe(map::remove);
     }
     
 }

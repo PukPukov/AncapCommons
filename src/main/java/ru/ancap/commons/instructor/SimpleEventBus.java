@@ -13,14 +13,14 @@ import java.util.function.Consumer;
  */
 @ToString @EqualsAndHashCode
 @RequiredArgsConstructor
-public class SimpleEventBus<EVENT> implements EventBus<EVENT> {
+public class SimpleEventBus<EVENT> implements Instructor<EVENT>, EventDispatcher<EVENT>, EventBus<EVENT> {
     
     private final Collection<Consumer<EVENT>> listeners;
 
     public SimpleEventBus() { this(new CopyOnWriteArrayList<>()); }
 
     @Override
-    public void accept(Consumer<EVENT> consumer) {
+    public void subscribe(Consumer<EVENT> consumer) {
         this.listeners.add(consumer);
     }
     

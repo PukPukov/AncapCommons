@@ -2,7 +2,6 @@ package ru.ancap.commons.instructor.common;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import ru.ancap.commons.instructor.EventBus;
 import ru.ancap.commons.instructor.SimpleEventBus;
 
 /**
@@ -11,7 +10,7 @@ import ru.ancap.commons.instructor.SimpleEventBus;
 @NoArgsConstructor @AllArgsConstructor
 public class MutSub<T> {
 
-    public final EventBus<T> onChange = new SimpleEventBus<>();
+    public final SimpleEventBus<T> onChange = new SimpleEventBus<>();
 
     private T value;
 
