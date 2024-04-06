@@ -8,14 +8,14 @@ import ru.ancap.commons.pattern.Pattern;
 
 @ToString @EqualsAndHashCode
 public class NumberPattern implements Pattern, RadixProvider {
-
+    
     @Override
     public boolean match(String string) {
         return this.radix(string) != null;
     }
     
     private final CacheMap<String, Integer> radixCache = new CacheMap<>();
-
+    
     @Override
     public Integer radix(String string) {
         return this.radixCache.get(string, () -> {

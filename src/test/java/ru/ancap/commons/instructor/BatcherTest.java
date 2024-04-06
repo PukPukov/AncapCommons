@@ -20,17 +20,19 @@ public class BatcherTest {
     @Test
     @SneakyThrows
     public void classic() {
-        EventBus<Long> base = new SimpleEventBus<>();
+        SimpleEventBus<Long> base = new SimpleEventBus<>();
         Batcher<Long> batcher = new Batcher<>(base, 256);
         BlockingQueue<List<Long>> collector = new ArrayBlockingQueue<>(2);
-        batcher.accept(new UConsumer<>(collector::put));
+        batcher.subscribe(new UConsumer<>(collector::put));
         AtomicInteger debug_i = new AtomicInteger();
 
         Thread thread = new Thread(new URunnable(() -> {
-            int sleptTimes = 0; // to not to make build too long
+            int sleptTimes = 0;
             for (long i = 0; i < 512; i++) {
                 debug_i.incrementAndGet();
-                if (sleptTimes < 64) { Thread.sleep(1); sleptTimes++; }
+                if (sleptTimes < 64) { // to not to make build too long
+                    Thread.sleep(1); sleptTimes++;
+                }
                 base.dispatch(i);
             }
         }));

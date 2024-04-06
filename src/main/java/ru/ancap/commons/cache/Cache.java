@@ -3,12 +3,15 @@ package ru.ancap.commons.cache;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import ru.ancap.commons.time.TimeProvider;
 
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor
 @ToString @EqualsAndHashCode
 public class Cache<T> {
+    
+    public static TimeProvider timeProvider = TimeProvider.SYSTEM_CLOCK;
 
     private final long cacheValidity;
 
@@ -22,9 +25,9 @@ public class Cache<T> {
     }
 
     public T get(Supplier<T> ifExpired) {
-        if (this.lastUpdateTime > System.currentTimeMillis() - this.cacheValidity) return this.cache;
+        if (this.lastUpdateTime > timeProvider.currentTime() - this.cacheValidity) return this.cache;
         this.cache = ifExpired.get();
-        this.lastUpdateTime = System.currentTimeMillis();
+        this.lastUpdateTime = timeProvider.currentTime();
         return this.cache;
     }
 

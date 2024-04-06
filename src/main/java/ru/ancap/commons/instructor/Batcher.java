@@ -13,9 +13,9 @@ public class Batcher<TYPE> implements Instructor<List<TYPE>> {
     private final int batchSize;
 
     @Override
-    public void accept(Consumer<List<TYPE>> consumer) {
+    public void subscribe(Consumer<List<TYPE>> consumer) {
         List<TYPE> batchAccumulator = new ArrayList<>(this.batchSize);
-        this.original.accept(value -> {
+        this.original.subscribe(value -> {
             batchAccumulator.add(value);
             if (batchAccumulator.size() == this.batchSize) {
                 consumer.accept(List.copyOf(batchAccumulator));

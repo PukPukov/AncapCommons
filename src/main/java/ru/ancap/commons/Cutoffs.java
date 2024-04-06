@@ -1,17 +1,21 @@
 package ru.ancap.commons;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.Accessors;
 import org.jetbrains.annotations.NotNull;
+import ru.ancap.commons.time.TimeProvider;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ToString @EqualsAndHashCode
 @RequiredArgsConstructor
 public class Cutoffs<T> {
+    
+    public static TimeProvider timeProvider = TimeProvider.SYSTEM_CLOCK;
     
     private final TreeSet<Cutoff<T>> set = new TreeSet<>();
     private final AtomicInteger index = new AtomicInteger(0);
@@ -19,7 +23,7 @@ public class Cutoffs<T> {
 
     public void mark(T t) {
         if (this.set.size() >= this.size) this.set.pollFirst();
-        this.set.add(new Cutoff<>(this.index.incrementAndGet(), System.currentTimeMillis(), t));
+        this.set.add(new Cutoff<>(this.index.incrementAndGet(), timeProvider.currentTime(), t));
     }
 
     /**
@@ -33,9 +37,11 @@ public class Cutoffs<T> {
     }
     
     @AllArgsConstructor
-    @ToString /* @EqualsAndHashCode уже реализовано */
+    @ToString @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+    @Accessors(fluent = true) @Getter
     public static class Cutoff<T> implements Comparable<Cutoff<?>> {
 
+        @EqualsAndHashCode.Include
         private final int  index;
         private final long time;
         private final T    value;
@@ -45,22 +51,6 @@ public class Cutoffs<T> {
             int result = Long.compare(this.time, other.time);
             if (result == 0) result = Long.compare(this.index, other.index);
             return result;
-        }
-        
-        public long time()  { return this.time;  }
-        public T    value() { return this.value; }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Cutoff<?> cutoff = (Cutoff<?>) o;
-            return this.index == cutoff.index;
-        }
-
-        @Override // я не просто так вручную написал hashCode, не менять
-        public int hashCode() {
-            return Objects.hash(this.index);
         }
         
     }
