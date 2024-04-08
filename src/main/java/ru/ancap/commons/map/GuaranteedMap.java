@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Delegate;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -20,6 +21,10 @@ public class GuaranteedMap<K, V> implements Map<K, V> {
             .guaranteed(guarantor)
             .build()
         );
+    }
+    
+    public @NotNull V getExplicitlyPlaced(Object key) {
+        return ((SafeMap<K, V>) this.base).getExplicitlyPlaced(key); // @Delegate in lombok does not support recursion
     }
     
 }

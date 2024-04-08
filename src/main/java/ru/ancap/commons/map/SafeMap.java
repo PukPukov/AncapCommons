@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import ru.ancap.commons.declarative.flow.Branch;
 
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -62,6 +63,12 @@ public class SafeMap<K, V> implements Map<K, V> {
     @Override
     public boolean containsKey(Object key) {
         return this.base.containsKey(key);
+    }
+    
+    public @NotNull V getExplicitlyPlaced(Object key) {
+        var value = this.base.get(key);
+        if (value == null) throw new NoSuchElementException();
+        return value;
     }
 
     private interface LombokExclude<T> {
