@@ -16,15 +16,13 @@ public class IterateSupplierTest {
     }
     
     private static class RangeSupplier implements Supplier<@Nullable Integer> {
-        private int from;
-        private int to;
+        private final int to;
+        private int current;
         
         public RangeSupplier(int from, int to) {
-            this.from = from;
             this.to = to;
+            this.current = from;
         }
-        
-        private int current = this.from;
         
         @Override
         public @Nullable Integer get() {
