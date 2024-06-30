@@ -32,6 +32,7 @@ public class AncapDebug {
         AncapDebug.debug(new Object[]{array});
     }
 
+    @NotNull
     private static String stringValueOf(@Nullable Object object) {
         if (object == null)                    return "null";
         else if (!object.getClass().isArray()) return object.toString();
