@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RequiredArgsConstructor
 @Accessors(fluent = true) @Getter
@@ -31,7 +31,7 @@ public class Weights<T> {
     }
     
     public T roll() {
-        double randomValue = new Random().nextLong(1, this.totalWeight+1);
+        double randomValue = ThreadLocalRandom.current().nextLong(1, this.totalWeight+1);
         
         int index = Arrays.binarySearch(this.prefixSums, (long) randomValue);
         if (index < 0) {
