@@ -1,7 +1,7 @@
 ![Release](https://jitpack.io/v/ancap-kun/AncapCommons.svg?style=flat-square)
 # AncapCommons
 
-Несколько утилитарных классов для Java.
+Несколько утилитарных классов.
 
 ## Подключение в Maven
 
