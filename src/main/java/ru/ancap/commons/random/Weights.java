@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RequiredArgsConstructor
@@ -31,7 +32,13 @@ public class Weights<T> {
     }
     
     public T roll() {
-        double randomValue = ThreadLocalRandom.current().nextLong(1, this.totalWeight+1);
+        return this.roll(ThreadLocalRandom.current());
+    }
+    
+    // TODO: migrate to RandomGenerator on AncapCommons to JDK 17 migration
+    
+    public T roll(Random random) {
+        double randomValue = random.nextLong(1, this.totalWeight+1);
         
         int index = Arrays.binarySearch(this.prefixSums, (long) randomValue);
         if (index < 0) {
