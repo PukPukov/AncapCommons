@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import org.jetbrains.annotations.ApiStatus;
 
 @Data
 @ToString @EqualsAndHashCode
@@ -12,8 +13,8 @@ public class Pair<K, V> {
     
     private final K key;
     private final V value;
-
-    @Deprecated(forRemoval = false) public K getKey()   { return this.key(); }
-    @Deprecated(forRemoval = false) public V getValue() { return this.value(); }
+    
+    @ApiStatus.Obsolete public K getKey()   { return this.key(); }
+    @ApiStatus.Obsolete public V getValue() { return this.value(); }
     
 }
