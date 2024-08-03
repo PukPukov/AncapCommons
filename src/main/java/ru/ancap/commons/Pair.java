@@ -17,4 +17,10 @@ public class Pair<K, V> {
     @ApiStatus.Obsolete public K getKey()   { return this.key(); }
     @ApiStatus.Obsolete public V getValue() { return this.value(); }
     
+    public K left()  { return this.key;   }
+    public V right() { return this.value; }
+    
+    public K first()  { return this.key;   }
+    public V second() { return this.value; }
+    
 }
