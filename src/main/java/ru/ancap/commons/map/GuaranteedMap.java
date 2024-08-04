@@ -21,8 +21,7 @@ public class GuaranteedMap<K, V> implements Map<K, V> {
     public GuaranteedMap(Map<K, V> base, Supplier<V> guarantor) {
         this(SafeMap.builder(base)
             .guaranteed(guarantor)
-            .build()
-        );
+            .build());
     }
     
     public GuaranteedMap(Supplier<V> guarantor) {
