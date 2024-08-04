@@ -15,8 +15,9 @@ import java.util.function.Supplier;
 @ToString @EqualsAndHashCode
 public class GuaranteedMap<K, V> implements Map<K, V> {
     
+    private final SafeMap<K, V> base; // two fields are required due to lack of @Delegate support in lombok
     @Delegate
-    private final Map<K, V> base;
+    private final Map<K, V> baseDelegate;
     
     public GuaranteedMap(Map<K, V> base, Supplier<V> guarantor) {
         this(SafeMap.builder(base)
@@ -28,8 +29,13 @@ public class GuaranteedMap<K, V> implements Map<K, V> {
         this(new HashMap<>(), guarantor);
     }
     
+    public GuaranteedMap(SafeMap<K, V> base) {
+        this.base = base;
+        this.baseDelegate = base;
+    }
+    
     public @NotNull V getExplicitlyPlaced(Object key) {
-        return ((SafeMap<K, V>) this.base).getExplicitlyPlaced(key); // @Delegate in lombok does not support recursion
+        return this.base.getExplicitlyPlaced(key);
     }
     
 }
