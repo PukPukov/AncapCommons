@@ -9,18 +9,21 @@ import org.jetbrains.annotations.ApiStatus;
 @Data
 @ToString @EqualsAndHashCode
 @Accessors(fluent = true)
-public class Pair<K, V> {
+public class Pair<A, B> {
     
-    private final K key;
-    private final V value;
+    private final A a;
+    private final B b;
     
-    @ApiStatus.Obsolete public K getKey()   { return this.key(); }
-    @ApiStatus.Obsolete public V getValue() { return this.value(); }
+    @ApiStatus.Obsolete public A getKey()   { return this.a(); }
+    @ApiStatus.Obsolete public B getValue() { return this.b(); }
     
-    public K left()  { return this.key;   }
-    public V right() { return this.value; }
+    public A left()  { return this.a; }
+    public B right() { return this.b; }
     
-    public K first()  { return this.key;   }
-    public V second() { return this.value; }
+    public A first()  { return this.a; }
+    public B second() { return this.b; }
+    
+    public A a() { return this.a; }
+    public B b() { return this.b; }
     
 }
