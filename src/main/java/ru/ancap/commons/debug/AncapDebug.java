@@ -5,7 +5,9 @@ import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -15,6 +17,15 @@ import java.util.function.Consumer;
 public class AncapDebug {
     
     public static Consumer<String> OUTPUT_CONSUMER = string -> System.out.println("DEBUG "+string);
+    
+    public static <T> T debugThrough(@Nullable T main, Object... additional) {
+        var objects = new ArrayList<>();
+        objects.add("main");
+        objects.add(main);
+        objects.addAll(List.of(additional));
+        debugArray(objects.toArray());
+        return main;
+    }
     
     public static void debug(@Nullable Object... objects) {
         StringBuilder debug = new StringBuilder();
