@@ -109,6 +109,7 @@ public class AncapDebug {
         StringBuilder debug = new StringBuilder();
         debug.append("=== DEBUG in ").append(callerInformation).append(" ===");
         debug.append("\n");
+        AncapDebug.simpleDebug(new String(debug));
         if (objects == null) debug.append("null");
         else if (objects.length == 0) debug.append("no objects to inspect provided");
         else for (int i = 0; i < objects.length; i++) {
@@ -250,7 +251,7 @@ public class AncapDebug {
             .collect(Collectors.joining(", "));
     }
     
-    private static void soloDebug(String string) {
+    private static void simpleDebug(String string) {
         AncapDebug.OUTPUT_CONSUMER.accept(string);
     }
     
