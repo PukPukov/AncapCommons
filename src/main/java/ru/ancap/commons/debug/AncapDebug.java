@@ -152,15 +152,17 @@ public class AncapDebug {
     private static DebugObjectsState readDebugObjectsState(Object[] objects) {
         @Nullable String name = null;
         StringBuilder builder = new StringBuilder();
+        int real_i = 0;
         if (objects == null) builder.append("null");
         else if (objects.length == 0) builder.append("no objects to inspect provided");
         else for (int i = 0; i < objects.length; i++) {
             Object object = objects[i];
             if (object instanceof AncapDebug.Name nameMarker) name = nameMarker.name();
             else {
-                builder.append("<").append(i).append("> ");
+                builder.append("<").append(real_i).append("> ");
                 builder.append(stringValueOf(object));
                 if (i < objects.length - 1) builder.append("\n");
+                real_i++;
             }
         }
         return new DebugObjectsState(Optional.ofNullable(name), builder);
