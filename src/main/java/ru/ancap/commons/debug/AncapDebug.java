@@ -118,15 +118,25 @@ public class AncapDebug {
         if (object instanceof Object []) return simplifiedName(object.getClass().getComponentType())+"[]{"+ Arrays.stream(((Object[]) object))
             .map(AncapDebug::stringValueOf)
             .collect(Collectors.joining(", "))+"}";
-        else if (object instanceof boolean []) return "boolean[]{" +Arrays.toString((boolean []) object)+"}";
-        else if (object instanceof byte    []) return "byte[]{"    +Arrays.toString((byte    []) object)+"}";
-        else if (object instanceof short   []) return "short[]{"   +Arrays.toString((short   []) object)+"}";
-        else if (object instanceof char    []) return "char[]{"    +Arrays.toString((char    []) object)+"}";
-        else if (object instanceof int     []) return "int[]{"     +Arrays.toString((int     []) object)+"}";
-        else if (object instanceof long    []) return "long[]{"    +Arrays.toString((long    []) object)+"}";
-        else if (object instanceof float   []) return "float[]{"   +Arrays.toString((float   []) object)+"}";
-        else if (object instanceof double  []) return "double[]{"  +Arrays.toString((double  []) object)+"}";
+        else if (object instanceof boolean []) return "boolean[]{" + pwacs(ArrayUtils.toObject((boolean []) object))+"}";
+        else if (object instanceof byte    []) return "byte[]{"    + pwacs(ArrayUtils.toObject((byte    []) object))+"}";
+        else if (object instanceof short   []) return "short[]{"   + pwacs(ArrayUtils.toObject((short   []) object))+"}";
+        else if (object instanceof char    []) return "char[]{"    + pwacs(ArrayUtils.toObject((char    []) object))+"}";
+        else if (object instanceof int     []) return "int[]{"     + pwacs(ArrayUtils.toObject((int     []) object))+"}";
+        else if (object instanceof long    []) return "long[]{"    + pwacs(ArrayUtils.toObject((long    []) object))+"}";
+        else if (object instanceof float   []) return "float[]{"   + pwacs(ArrayUtils.toObject((float   []) object))+"}";
+        else if (object instanceof double  []) return "double[]{"  + pwacs(ArrayUtils.toObject((double  []) object))+"}";
         else throw new IllegalStateException();
+    }
+    
+    /**
+     * pwacs — primitiveWrapperArrayContentsString
+     */
+    @SafeVarargs
+    private static <T> String pwacs(T... array) {
+        return Arrays.stream(array)
+            .map(String::valueOf)
+            .collect(Collectors.joining(", "));
     }
     
     private static void soloDebug(String string) {
