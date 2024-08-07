@@ -159,13 +159,13 @@ public class AncapDebug {
         else if (object instanceof  Integer    integer)    return integer+"i";
         
         else if (object instanceof Raw raw)                return raw.toString();
-        else if (object instanceof AncapDebug.Named named) return named.name()+" "+stringValueOf(named.object());
+        else if (object instanceof AncapDebug.Named named) return named.name()+": "+stringValueOf(named.object());
         else if (object instanceof Iterable<?> iterable)   return
             debugName(iterable.getClass())+
             "{   "+streamElementsString(StreamIterator.wrap(iterable.iterator())
                 .map(Object.class::cast))+"   }";
-        else if (object.getClass().isArray())               return InMarks.wrap(arrayObjectToString(object));
-        else                                                return InMarks.wrap(debugName(object.getClass())+"{  "+object.toString()+"  }");
+        else if (object.getClass().isArray())              return InMarks.wrap(arrayObjectToString(object));
+        else                                               return InMarks.wrap(debugName(object.getClass())+"{  "+object.toString()+"  }");
     }
     
     /**
