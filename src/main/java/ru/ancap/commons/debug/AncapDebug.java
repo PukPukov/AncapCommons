@@ -8,8 +8,9 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ancap.commons.DynData;
-import ru.ancap.commons.InMarks;
+import ru.ancap.commons.string.InMarks;
 import ru.ancap.commons.iterable.StreamIterator;
+import ru.ancap.commons.string.Postformatter;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -200,7 +201,7 @@ public class AncapDebug {
         
         else if (object instanceof Raw raw)                          return raw.toString();
         else if (object instanceof AncapDebug.Named named)           return named.name()+": "+streamElementsString(Arrays.stream(named.objects()));
-        else if (object instanceof AncapDebug.Postformat postformat) return postFormat(streamElementsString(Arrays.stream(postformat.objects())));
+        else if (object instanceof AncapDebug.Postformat postformat) return Postformatter.postformat(streamElementsString(Arrays.stream(postformat.objects())));
         
         else if (object instanceof Character character)              return "'"+character.toString()+"'";
         else if (object instanceof  Boolean   boolean_)              return boolean_.toString();
@@ -306,50 +307,6 @@ public class AncapDebug {
         
         if (stackTrace.length > 3) return Optional.of(stackTrace[3]);
         else return Optional.empty();
-    }
-    
-    public static final int INDENT_SIZE = 4;
-    
-    public static String postFormat(String unformatted) {
-        StringBuilder formatted = new StringBuilder();
-        char[] chars = unformatted.toCharArray();
-        int length = chars.length;
-        
-        for (int i = 0; i < length; i++) {
-            char current = chars[i];
-            char prev = i - 1 > 0 ? chars[i - 1] : '\0';
-            char next = i + 1 < length ? chars[i + 1] : '\0';
-            
-            if ((current == '[' && next != ']') || (current == '{'  && next != '}') || (current == '('  && next != ')')) formatted.append(current).append('\n');
-            else if ((current == ']' && prev != '[') || (current == '}' && prev != '{') || (current == ')' && prev != '(')) {
-                if (next != ',' && next != '\"') formatted.append('\n').append(current).append('\n');
-                else {
-                    formatted.append('\n').append(current).append(next).append('\n');
-                    i++;
-                }
-            } else formatted.append(current);
-        }
-        
-        String[] lines = formatted.toString().split("\n");
-        
-        int indentLevel = 0;
-        for (int i = 0; i < lines.length; i++) {
-            String line = lines[i];
-            if (
-                line.endsWith("}")|| line.endsWith("}\"") || line.endsWith("},") ||
-                line.endsWith("]")|| line.endsWith("]\"") || line.endsWith("],") ||
-                line.endsWith(")")|| line.endsWith(")\"") || line.endsWith("),")
-            ) indentLevel--;
-            lines[i] = setIndents(line, indentLevel);
-            if (line.endsWith("[") || line.endsWith("{") || line.endsWith("(")) indentLevel++;
-        }
-        return Arrays.stream(lines)
-            .filter(line -> !line.isBlank())
-            .collect(Collectors.joining("\n"));
-    }
-    
-    private static String setIndents(String line, int indentLevel) {
-        return  " ".repeat(Math.max(0, indentLevel * INDENT_SIZE)) + line.stripIndent();
     }
     
     @SneakyThrows

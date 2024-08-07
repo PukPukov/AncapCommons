@@ -1,4 +1,4 @@
-package ru.ancap.commons;
+package ru.ancap.commons.string;
 
 public class InMarks {
     
