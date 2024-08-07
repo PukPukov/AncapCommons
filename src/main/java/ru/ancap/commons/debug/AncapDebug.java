@@ -33,6 +33,49 @@ public class AncapDebug {
         return main;
     }
     
+    /**
+     * Magic method to name line.
+     * <p>
+     * Example:
+     * <pre>
+     * debug(named("foo", foo), bar)
+     * </pre>
+     * will output<br>
+     * <pre>
+     * === DEBUG in %CALLER% ===
+     * <0> foo "%FOO DATA%"
+     * <1> "%BAR_DATA%"
+     * </pre>
+     */
+    public static Object named(String name, Object object) { return new Named(name, object); }
+    
+    /**
+     * Magic method to inline objects.
+     * <p>
+     * Example:
+     * <pre>
+     * debug(inline(foo, bar))
+     * </pre>
+     * will output<br>
+     * <pre>
+     * === DEBUG in %CALLER% ===
+     * <0> (2 entries) "%FOO DATA%" "%BAR_DATA%"
+     * </pre>
+     */
+    public static Object inline(Object... objects)         { return new Inline(objects);     }
+    
+    private record Named(String name, Object object) { }
+    private record Inline(Object[] objects) {
+        
+        @Override
+        public String toString() {
+            return "("+this.objects.length+" entries)" + Arrays.stream(this.objects())
+                .map(AncapDebug::stringValueOf)
+                .collect(Collectors.joining(" "));
+        }
+        
+    }
+    
     public static void debug(@Nullable Object... objects) {
         StringBuilder debug = new StringBuilder();
         String callerInformation = caller()
@@ -43,10 +86,9 @@ public class AncapDebug {
         debug.append("\n");
         for (int i = 0; i < objects.length; i++) {
             Object object = objects[i];
-            if (i != 0) debug.append(" ");
-            debug.append("(").append(i).append(")\"");
+            debug.append("<").append(i).append("> ");
             debug.append(stringValueOf(object));
-            debug.append("\"");
+            debug.append("\n");
         }
         AncapDebug.soloDebug(new String(debug));
     }
@@ -57,13 +99,23 @@ public class AncapDebug {
     
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
-        if (object == null)                    return "null";
-        else if (!object.getClass().isArray()) return object.getClass().getName()+"{"+object+"}";
-        else                                   return arrayObjectToString(object);
+        if (object == null)                           return "\"null\"";
+        if (object instanceof AncapDebug.Named named) return named.name()+" "+stringValueOf(named.object());
+        else if (object.getClass().isArray())         return "\""+arrayObjectToString(object)+"\"";
+        else                                          return "\""+simplifiedName(object.getClass())+"{  "+object+"  }"+"\"";
+    }
+    
+    private static final String javaLangPrefix = "java.lang.";
+    
+    private static String simplifiedName(Class<?> class_) {
+        String fullName = class_.getName();
+        if (class_.getPackageName().isEmpty()) fullName = "<root-package>."+fullName;
+        else if (fullName.startsWith(javaLangPrefix)) fullName = fullName.substring(javaLangPrefix.length());
+        return fullName;
     }
     
     private static String arrayObjectToString(@NotNull Object object) {
-        if (object instanceof Object []) return object.getClass().getComponentType().getName()+"[]{"+ Arrays.stream(((Object[]) object))
+        if (object instanceof Object []) return simplifiedName(object.getClass().getComponentType())+"[]{"+ Arrays.stream(((Object[]) object))
             .map(AncapDebug::stringValueOf)
             .collect(Collectors.joining(", "))+"}";
         else if (object instanceof boolean []) return "boolean[]{" +Arrays.toString((boolean []) object)+"}";
