@@ -131,7 +131,8 @@ public class AncapDebug {
     }
     
     private record Named(String name, Object object) { }
-    private record Inline(Object[] objects) {
+    private interface Raw {}
+    private record Inline(Object[] objects) implements Raw {
         
         @Override
         public String toString() {
@@ -144,15 +145,15 @@ public class AncapDebug {
     
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
-        if (object == null)                                  return "\"null\"";
-        else if (object instanceof AncapDebug.Inline inline) return inline.toString();
-        else if (object instanceof AncapDebug.Named named)   return named.name()+" "+stringValueOf(named.object());
-        else if (object instanceof Iterable<?> iterable)     return
+        if (object == null)                                return "\"null\"";
+        else if (object instanceof Raw raw)                return raw.toString();
+        else if (object instanceof AncapDebug.Named named) return named.name()+" "+stringValueOf(named.object());
+        else if (object instanceof Iterable<?> iterable)   return
             debugName(iterable.getClass())+
             "{   "+streamElementsString(StreamIterator.wrap(iterable.iterator())
                 .map(Object.class::cast))+"   }";
-        else if (object.getClass().isArray())                return "\""+arrayObjectToString(object)+"\"";
-        else                                                 return "\""+debugName(object.getClass())+"{  "+object.toString()+"  }"+"\"";
+        else if (object.getClass().isArray())               return "\""+arrayObjectToString(object)+"\"";
+        else                                                return "\""+debugName(object.getClass())+"{  "+object.toString()+"  }"+"\"";
     }
     
     /**
