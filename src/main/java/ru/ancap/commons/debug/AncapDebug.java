@@ -132,6 +132,14 @@ public class AncapDebug {
      */
     public static Object postformat(Object... objects)         { return new Postformat(objects);     }
     
+    /**
+     * Marks all classes that located inside this area as common to remove their packages in debug output.
+     * <p>
+     * Should be used wisely. If you will add packages that have class name intersections with existing packages,
+     * it can confuse you.
+     */
+    public static void addCommonPrefix(String commonPrefix) { commonPrefixes.add(commonPrefix); }
+    
     /* --- PRIVATE ENTRIES --- */
     
     private static void debug0(Optional<StackTraceElement> caller, @Nullable Object @Nullable... objects) {
@@ -170,11 +178,11 @@ public class AncapDebug {
     
     private record DebugObjectsState(Optional<String> globalName, StringBuilder builder) {}
     
-    public static void debugArray0(Optional<StackTraceElement> caller, @Nullable Object @Nullable[] array) {
+    private static void debugArray0(Optional<StackTraceElement> caller, @Nullable Object @Nullable[] array) {
         debug0(caller, new Object[]{array});
     }
     
-    public static <T> T debugThrough0(Optional<StackTraceElement> caller, @Nullable T main, Object... additional) {
+    private static <T> T debugThrough0(Optional<StackTraceElement> caller, @Nullable T main, Object... additional) {
         var objects = new ArrayList<>();
         objects.add(named("main", main));
         objects.addAll(List.of(additional));
@@ -226,11 +234,7 @@ public class AncapDebug {
         else                                                         return InMarks.wrap(debugName(object.getClass())+"{  "+object.toString()+"  }");
     }
     
-    /**
-     * Should be used wisely. If you will add packages that have class name intersections with existing packages,
-     * it can confuse you.
-     */
-    public static final List<String> commonPrefixes = new CopyOnWriteArrayList<>(List.of(
+    private static final List<String> commonPrefixes = new CopyOnWriteArrayList<>(List.of(
         "java.lang",
         "java.util",
         "java.io",
