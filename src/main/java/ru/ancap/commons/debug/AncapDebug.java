@@ -196,7 +196,7 @@ public class AncapDebug {
     
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
-        if (object == null)                                          return InMarks.wrap("null");
+        if (object == null)                                          return "null";
         
         else if (object instanceof Raw raw)                          return raw.toString();
         else if (object instanceof AncapDebug.Named named)           return named.name()+": "+streamElementsString(Arrays.stream(named.objects()));
