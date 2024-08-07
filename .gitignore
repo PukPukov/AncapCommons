@@ -40,3 +40,5 @@ target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 **/.idea/
 **/target/
 **/dependency-reduced-pom.xml
+/.project
+/.classpath

@@ -49,6 +49,10 @@ import java.util.stream.Stream;
 @ToString @EqualsAndHashCode
 public class AncapDebug {
     
+    // TODO сериализация
+    // TODO отступы
+    // TODO name()
+    
     public static volatile Consumer<String> OUTPUT_CONSUMER = System.out::println;
     
     public static void debug(@Nullable Object @Nullable... objects) {
@@ -120,10 +124,9 @@ public class AncapDebug {
     
     public static <T> T debugThrough0(Optional<StackTraceElement> caller, @Nullable T main, Object... additional) {
         var objects = new ArrayList<>();
-        objects.add("main");
-        objects.add(main);
+        objects.add(named("main", main));
         objects.addAll(List.of(additional));
-        debugArray0(caller, objects.toArray());
+        debug0(caller, objects.toArray());
         return main;
     }
     
@@ -241,6 +244,24 @@ public class AncapDebug {
         
         if (stackTrace.length > 3) return Optional.of(stackTrace[3]);
         else return Optional.empty();
+    }
+    
+    @SneakyThrows
+    private static DynData<ToStringImplementationStatusEnumeration, ?> toStringImplementationStatus(Object object) {
+        Class<?> class_ = object.getClass();
+        Method toStringMethod = class_.getMethod("toString");
+        Class<?> declaringClass = toStringMethod.getDeclaringClass();
+        if (declaringClass == Object.class) return new DynData<>(ToStringImplementationStatusEnumeration.NOT_IMPLEMENTED, null);
+        else if (declaringClass == object.getClass()) return new DynData<>(ToStringImplementationStatusEnumeration.IMPLEMENTED, null);
+        else return new DynData<>(ToStringImplementationStatusEnumeration.IMPLEMENTED_IN_SUPER, declaringClass);
+    }
+    
+    public enum ToStringImplementationStatusEnumeration {
+        
+        NOT_IMPLEMENTED,
+        IMPLEMENTED_IN_SUPER,
+        IMPLEMENTED
+        
     }
     
 }
