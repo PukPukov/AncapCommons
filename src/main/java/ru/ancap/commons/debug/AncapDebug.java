@@ -21,7 +21,29 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Marker class to use it for leaving debug messages and easily find them with "find usages" in any IDE.
+ * Exhaustive and convenient System.out.println() alternative for debug.
+ * <ul>
+ * <li>Provides type information so there will be no confusion between new StringBuilder("4") and String.valueOf("4")</li>
+ * <li>Omits java.lang package to shorten output and explicitly marks package as {@code <root-package>} if class has no package</li>
+ * <li>Shows caller information so there is no need to name calls manually</li>
+ * <li>Serializes classes in JSON that does not implement toString() (TODO)</li>
+ * <li>Deeply outputs array contents</li>
+ * </ul>
+ *
+ * <p>
+ * Known limitations and external bugs:
+ * <ul>
+ * <li> StackTraceElement does not contain information about fully qualified file name, that can be confusing if you have multiple
+ * files with same name. This is usually not a problem because there is fully qualified class name, but Intellij IDEA line number link
+ * integration can mislead to another file because of that.</li>
+ * <li> Collections usually do not provide type information about their entries. There is a workaround that checks if object is iterable
+ * and uses own toString() implementation, but if some collection is not instance of Iterable there will be no information about types.</li>
+ * <li>Due to type erasure, generic type information can not be obtained.</li>
+ * </ul>
+ * <p>
+ * Can also be used as marker class so all debug messages can be easily found with "find usages" in any IDE.
+ * <p>
+ * Recommended usage via static import {@code import static ru.ancap.commons.debug.AncapDebug.* }
  */
 @ThreadSafe
 @ToString @EqualsAndHashCode
