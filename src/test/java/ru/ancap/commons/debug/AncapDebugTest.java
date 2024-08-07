@@ -1,8 +1,10 @@
 package ru.ancap.commons.debug;
 
 
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import ru.ancap.commons.random.Weight;
+import ru.ancap.commons.random.Weights;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ import static ru.ancap.commons.debug.AncapDebug.*;
 @HandTest
 public class AncapDebugTest {
     
-    public static void main(String[] args) {
+    @Test // for coverage
+    public void test() {
         debug((Object) null);
         debug((Object[]) null);
         debug();
@@ -23,20 +26,13 @@ public class AncapDebugTest {
         debug(inline(true, false));
         
         debug(name("fizz"), true, false);
+        debug(new Weights<>(List.of(new Weight<>(null, 20))));
         
-        testThrough();
+        Assertions.assertTrue(testThrough());
     }
     
     private static boolean testThrough() {
         return debugThrough(true, false);
-    }
-    
-    @RequiredArgsConstructor
-    @ToString
-    public static class PartialErasure<E extends Number> {
-        
-        private final E number;
-        
     }
     
 }

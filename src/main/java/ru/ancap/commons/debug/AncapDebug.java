@@ -225,12 +225,6 @@ public class AncapDebug {
         return fullName;
     }
     
-    private static String simplifyName(String fullName) {
-        String commonPrefix = commonPrefix(fullName);
-        if (commonPrefix != null) return removeDot(fullName.substring(commonPrefix.length()));
-        else return fullName;
-    }
-    
     private static String removeDot(String noPackageName) {
         if (noPackageName.startsWith(".")) return noPackageName.substring(1);
         else return noPackageName;
