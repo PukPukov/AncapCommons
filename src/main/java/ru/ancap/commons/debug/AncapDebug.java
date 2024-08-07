@@ -77,7 +77,7 @@ public class AncapDebug {
         debug.append("=== DEBUG in ").append(callerInformation).append(" ===");
         debug.append("\n");
         if (objects == null) debug.append("null");
-        else if (objects.length == 0) debug.append("empty");
+        else if (objects.length == 0) debug.append("no objects to inspect provided");
         else for (int i = 0; i < objects.length; i++) {
             Object object = objects[i];
             debug.append("<").append(i).append("> ");
