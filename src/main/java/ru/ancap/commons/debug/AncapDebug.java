@@ -25,35 +25,15 @@ public class AncapDebug {
     public static volatile Consumer<String> OUTPUT_CONSUMER = System.out::println;
     
     public static void debug(@Nullable Object @Nullable... objects) {
-        StringBuilder debug = new StringBuilder();
-        String callerInformation = caller()
-            .map(StackTraceElement::toString)
-            .orElse("null");
-        
-        debug.append("=== DEBUG in ").append(callerInformation).append(" ===");
-        debug.append("\n");
-        if (objects == null) debug.append("null");
-        else if (objects.length == 0) debug.append("empty");
-        else for (int i = 0; i < objects.length; i++) {
-            Object object = objects[i];
-            debug.append("<").append(i).append("> ");
-            debug.append(stringValueOf(object));
-            if (i < objects.length - 1) debug.append("\n");
-        }
-        AncapDebug.soloDebug(new String(debug));
+        debug0(caller(), objects);
     }
     
     public static void debugArray(@Nullable Object @Nullable[] array) {
-        AncapDebug.debug(new Object[]{array});
+        debugArray0(caller(), array);
     }
     
     public static <T> T debugThrough(@Nullable T main, Object... additional) {
-        var objects = new ArrayList<>();
-        objects.add("main");
-        objects.add(main);
-        objects.addAll(List.of(additional));
-        debugArray(objects.toArray());
-        return main;
+        return debugThrough0(caller(), main, additional);
     }
     
     /**
@@ -86,6 +66,39 @@ public class AncapDebug {
      * </pre>
      */
     public static Object inline(Object... objects)         { return new Inline(objects);     }
+    
+    /* --- PRIVATE ENTRIES --- */
+    
+    private static void debug0(Optional<StackTraceElement> caller, @Nullable Object @Nullable... objects) {
+        String callerInformation = caller
+            .map(StackTraceElement::toString)
+            .orElse("null");
+        StringBuilder debug = new StringBuilder();
+        debug.append("=== DEBUG in ").append(callerInformation).append(" ===");
+        debug.append("\n");
+        if (objects == null) debug.append("null");
+        else if (objects.length == 0) debug.append("empty");
+        else for (int i = 0; i < objects.length; i++) {
+            Object object = objects[i];
+            debug.append("<").append(i).append("> ");
+            debug.append(stringValueOf(object));
+            if (i < objects.length - 1) debug.append("\n");
+        }
+        AncapDebug.soloDebug(new String(debug));
+    }
+    
+    public static void debugArray0(Optional<StackTraceElement> caller, @Nullable Object @Nullable[] array) {
+        debug0(caller, new Object[]{array});
+    }
+    
+    public static <T> T debugThrough0(Optional<StackTraceElement> caller, @Nullable T main, Object... additional) {
+        var objects = new ArrayList<>();
+        objects.add("main");
+        objects.add(main);
+        objects.addAll(List.of(additional));
+        debugArray0(caller, objects.toArray());
+        return main;
+    }
     
     private record Named(String name, Object object) { }
     private record Inline(Object[] objects) {
