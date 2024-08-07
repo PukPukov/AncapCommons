@@ -35,7 +35,7 @@ public class AncapDebug {
         for (int i = 0; i < objects.length; i++) {
             Object object = objects[i];
             if (i != 0) debug.append(" ");
-            debug.append("\"");
+            debug.append("(").append(i).append(")\"");
             debug.append(stringValueOf(object));
             debug.append("\"");
         }
