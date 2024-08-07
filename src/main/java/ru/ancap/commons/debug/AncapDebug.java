@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * Marker class to use it for leaving debug messages and easily find them with "find usages" in any IDE.
@@ -46,20 +47,22 @@ public class AncapDebug {
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
         if (object == null)                    return "null";
-        else if (!object.getClass().isArray()) return object.toString();
+        else if (!object.getClass().isArray()) return object.getClass()+"{"+object+"}";
         else                                   return arrayObjectToString(object);
     }
 
     private static String arrayObjectToString(@NotNull Object object) {
-        if      (object instanceof Object  []) return Arrays.deepToString( (Object  []) object);
-        else if (object instanceof boolean []) return Arrays.toString(     (boolean []) object);
-        else if (object instanceof byte    []) return Arrays.toString(     (byte    []) object);
-        else if (object instanceof short   []) return Arrays.toString(     (short   []) object);
-        else if (object instanceof char    []) return Arrays.toString(     (char    []) object);
-        else if (object instanceof int     []) return Arrays.toString(     (int     []) object);
-        else if (object instanceof long    []) return Arrays.toString(     (long    []) object);
-        else if (object instanceof float   []) return Arrays.toString(     (float   []) object);
-        else if (object instanceof double  []) return Arrays.toString(     (double  []) object);
+        if (object instanceof Object []) return object.getClass().getComponentType().getName()+"[]{"+ Arrays.stream(((Object[]) object))
+            .map(AncapDebug::stringValueOf)
+            .collect(Collectors.joining(", "))+"}";
+        else if (object instanceof boolean []) return "boolean[]{" +Arrays.toString((boolean []) object)+"}";
+        else if (object instanceof byte    []) return "byte[]{"    +Arrays.toString((byte    []) object)+"}";
+        else if (object instanceof short   []) return "short[]{"   +Arrays.toString((short   []) object)+"}";
+        else if (object instanceof char    []) return "char[]{"    +Arrays.toString((char    []) object)+"}";
+        else if (object instanceof int     []) return "int[]{"     +Arrays.toString((int     []) object)+"}";
+        else if (object instanceof long    []) return "long[]{"    +Arrays.toString((long    []) object)+"}";
+        else if (object instanceof float   []) return "float[]{"   +Arrays.toString((float   []) object)+"}";
+        else if (object instanceof double  []) return "double[]{"  +Arrays.toString((double  []) object)+"}";
         else throw new IllegalStateException();
     }
 
