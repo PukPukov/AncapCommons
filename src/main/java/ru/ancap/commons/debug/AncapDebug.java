@@ -34,12 +34,13 @@ import java.util.stream.Stream;
  * <p>
  * Known limitations and external bugs:
  * <ul>
- * <li> StackTraceElement does not contain information about fully qualified file name, that can be confusing if you have multiple
+ * <li>StackTraceElement does not contain information about fully qualified file name, that can be confusing if you have multiple
  * files with same name. This is usually not a problem because there is fully qualified class name, but Intellij IDEA line number link
  * integration can mislead to another file because of that.</li>
- * <li> Collections usually do not provide type information about their entries. There is a workaround that checks if object is iterable
+ * <li>Collections usually do not provide type information about their entries. There is a workaround that checks if object is iterable
  * and uses own toString() implementation, but if some collection is not instance of Iterable there will be no information about types.</li>
  * <li>Due to type erasure, generic type information can not be obtained.</li>
+ * <li>Primitives and wrappers can't be distinguished because of lack of `any` type in Java</li>
  * </ul>
  * <p>
  * Can also be used as marker class so all debug messages can be easily found with "find usages" in any IDE.
@@ -146,7 +147,17 @@ public class AncapDebug {
     
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
-        if (object == null)                                return "\"null\"";
+        if (object == null)                                return InMarks.wrap("null");
+        
+        else if (object instanceof Character character)    return "'"+character.toString()+"'";
+        else if (object instanceof  Boolean   boolean_)    return boolean_.toString();
+        else if (object instanceof    Short     short_)    return short_+"s";
+        else if (object instanceof     Byte      byte_)    return byte_+"b";
+        else if (object instanceof     Long      long_)    return long_+"L";
+        else if (object instanceof    Float     float_)    return float_+"f";
+        else if (object instanceof   Double    double_)    return double_+"D";
+        else if (object instanceof  Integer    integer)    return integer+"i";
+        
         else if (object instanceof Raw raw)                return raw.toString();
         else if (object instanceof AncapDebug.Named named) return named.name()+" "+stringValueOf(named.object());
         else if (object instanceof Iterable<?> iterable)   return
