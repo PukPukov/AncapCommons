@@ -49,7 +49,7 @@ public class AncapDebug {
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
         if (object == null)                    return "null";
-        else if (!object.getClass().isArray()) return object.getClass()+"{"+object+"}";
+        else if (!object.getClass().isArray()) return object.getClass().getName()+"{"+object+"}";
         else                                   return arrayObjectToString(object);
     }
 
