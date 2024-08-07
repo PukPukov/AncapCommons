@@ -76,7 +76,7 @@ public class AncapDebug {
         
     }
     
-    public static void debug(@Nullable Object... objects) {
+    public static void debug(@Nullable Object @Nullable... objects) {
         StringBuilder debug = new StringBuilder();
         String callerInformation = caller()
             .map(StackTraceElement::toString)
@@ -84,7 +84,9 @@ public class AncapDebug {
         
         debug.append("=== DEBUG in ").append(callerInformation).append(" ===");
         debug.append("\n");
-        for (int i = 0; i < objects.length; i++) {
+        if (objects == null) debug.append("null");
+        else if (objects.length == 0) debug.append("empty");
+        else for (int i = 0; i < objects.length; i++) {
             Object object = objects[i];
             debug.append("<").append(i).append("> ");
             debug.append(stringValueOf(object));
@@ -93,7 +95,7 @@ public class AncapDebug {
         AncapDebug.soloDebug(new String(debug));
     }
     
-    public static void debugArray(@Nullable Object[] array) {
+    public static void debugArray(@Nullable Object @Nullable[] array) {
         AncapDebug.debug(new Object[]{array});
     }
     
