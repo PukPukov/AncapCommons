@@ -29,6 +29,7 @@ import java.util.stream.Stream;
  * <li>Shows caller information so there is no need to name calls manually</li>
  * <li>Serializes classes in JSON that does not implement toString() (TODO)</li>
  * <li>Deeply outputs array contents</li>
+ * <li>Offers tool to postformat shitty external toString() to something readable (with obvious limitations)</li>
  * </ul>
  *
  * <p>
@@ -52,7 +53,6 @@ import java.util.stream.Stream;
 public class AncapDebug {
     
     // TODO сериализация
-    // TODO отступы
     
     public static volatile Consumer<String> OUTPUT_CONSUMER = System.out::println;
     
@@ -98,7 +98,7 @@ public class AncapDebug {
      * <1> "%BAR_DATA%"
      * </pre>
      */
-    public static Object named(String name, Object object) { return new Named(name, object); }
+    public static Object named(String name, Object... objects) { return new Named(name, objects); }
     
     /**
      * Magic method to inline objects.
@@ -114,6 +114,22 @@ public class AncapDebug {
      * </pre>
      */
     public static Object inline(Object... objects)         { return new Inline(objects);     }
+    
+    /**
+     * Magic method to postformat any toString() output.
+     * <p>
+     * Example:
+     * <pre>
+     * debug(foo, postformat(bar));
+     * </pre>
+     * will output<br>
+     * <pre>
+     * === DEBUG in %CALLER% ===
+     * <0> "%FOO DATA%"
+     * <1> "%PRETTY_BAR_DATA%"
+     * </pre>
+     */
+    public static Object postformat(Object... objects)         { return new Postformat(objects);     }
     
     /* --- PRIVATE ENTRIES --- */
     
@@ -142,7 +158,8 @@ public class AncapDebug {
             if (object instanceof AncapDebug.Name nameMarker) name = nameMarker.name();
             else {
                 builder.append("<").append(i).append("> ");
-                builder.append(stringValueOf(object));
+                if (object instanceof AncapDebug.Postformat postformat) builder.append(postFormat(streamElementsString(Arrays.stream(postformat.objects()))));
+                else builder.append(stringValueOf(object));
                 if (i < objects.length - 1) builder.append("\n");
             }
         }
@@ -163,10 +180,11 @@ public class AncapDebug {
         return main;
     }
     
-    private record Named(String name, Object object) { }
     private record Name(String name) { }
+    private record Named(String name, Object... objects) { }
+    private record Postformat(Object... objects) { }
     private interface Raw {}
-    private record Inline(Object[] objects) implements Raw {
+    private record Inline(Object... objects) implements Raw {
         
         @Override
         public String toString() {
@@ -193,7 +211,7 @@ public class AncapDebug {
         else if (object instanceof   String     string)    return InMarks.wrap(string);
         
         else if (object instanceof Raw raw)                return raw.toString();
-        else if (object instanceof AncapDebug.Named named) return named.name()+": "+stringValueOf(named.object());
+        else if (object instanceof AncapDebug.Named named) return named.name()+": "+streamElementsString(Arrays.stream(named.objects()));
         else if (object instanceof Iterable<?> iterable)   return
             debugName(iterable.getClass())+
             "{   "+streamElementsString(StreamIterator.wrap(iterable.iterator())
@@ -285,6 +303,50 @@ public class AncapDebug {
         
         if (stackTrace.length > 3) return Optional.of(stackTrace[3]);
         else return Optional.empty();
+    }
+    
+    public static final int INDENT_SIZE = 4;
+    
+    public static String postFormat(String unformatted) {
+        StringBuilder formatted = new StringBuilder();
+        char[] chars = unformatted.toCharArray();
+        int length = chars.length;
+        
+        for (int i = 0; i < length; i++) {
+            char current = chars[i];
+            char prev = i - 1 > 0 ? chars[i - 1] : '\0';
+            char next = i + 1 < length ? chars[i + 1] : '\0';
+            
+            if ((current == '[' && next != ']') || (current == '{'  && next != '}') || (current == '('  && next != ')')) formatted.append(current).append('\n');
+            else if ((current == ']' && prev != '[') || (current == '}' && prev != '{') || (current == ')' && prev != '(')) {
+                if (next != ',' && next != '\"') formatted.append('\n').append(current).append('\n');
+                else {
+                    formatted.append('\n').append(current).append(next).append('\n');
+                    i++;
+                }
+            } else formatted.append(current);
+        }
+        
+        String[] lines = formatted.toString().split("\n");
+        
+        int indentLevel = 0;
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i];
+            if (
+                line.endsWith("}")|| line.endsWith("}\"") || line.endsWith("},") ||
+                line.endsWith("]")|| line.endsWith("]\"") || line.endsWith("],") ||
+                line.endsWith(")")|| line.endsWith(")\"") || line.endsWith("),")
+            ) indentLevel--;
+            lines[i] = setIndents(line, indentLevel);
+            if (line.endsWith("[") || line.endsWith("{") || line.endsWith("(")) indentLevel++;
+        }
+        return Arrays.stream(lines)
+            .filter(line -> !line.isBlank())
+            .collect(Collectors.joining("\n"));
+    }
+    
+    private static String setIndents(String line, int indentLevel) {
+        return  " ".repeat(Math.max(0, indentLevel * INDENT_SIZE)) + line.stripIndent();
     }
     
     @SneakyThrows
