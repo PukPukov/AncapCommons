@@ -7,6 +7,8 @@ import net.jcip.annotations.ThreadSafe;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import ru.ancap.commons.DynData;
+import ru.ancap.commons.iterable.StreamIterator;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Marker class to use it for leaving debug messages and easily find them with "find usages" in any IDE.
@@ -107,7 +110,7 @@ public class AncapDebug {
         
         @Override
         public String toString() {
-            return "("+this.objects.length+" entries)" + Arrays.stream(this.objects())
+            return "("+this.objects.length+" entries) " + Arrays.stream(this.objects())
                 .map(AncapDebug::stringValueOf)
                 .collect(Collectors.joining(" "));
         }
@@ -116,10 +119,15 @@ public class AncapDebug {
     
     @NotNull
     private static String stringValueOf(@Nullable Object object) {
-        if (object == null)                           return "\"null\"";
-        if (object instanceof AncapDebug.Named named) return named.name()+" "+stringValueOf(named.object());
-        else if (object.getClass().isArray())         return "\""+arrayObjectToString(object)+"\"";
-        else                                          return "\""+simplifiedName(object.getClass())+"{  "+object+"  }"+"\"";
+        if (object == null)                                  return "\"null\"";
+        else if (object instanceof AncapDebug.Inline inline) return inline.toString();
+        else if (object instanceof AncapDebug.Named named)   return named.name()+" "+stringValueOf(named.object());
+        else if (object instanceof Iterable<?> iterable)     return
+            debugName(iterable.getClass())+
+            "{   "+streamElementsString(StreamIterator.wrap(iterable.iterator())
+                .map(Object.class::cast))+"   }";
+        else if (object.getClass().isArray())                return "\""+arrayObjectToString(object)+"\"";
+        else                                                 return "\""+debugName(object.getClass())+"{  "+object.toString()+"  }"+"\"";
     }
     
     /**
@@ -138,28 +146,43 @@ public class AncapDebug {
         "java.time"
     ));
     
+    private static String debugName(Class<?> class_) {
+        String fullName;
+        if (class_.getPackageName().isEmpty()) fullName = "<root-package>."+class_.getName();
+        else fullName = simplifiedName(class_);
+        return fullName;
+    }
+    
+    private static String simplifyName(String fullName) {
+        String commonPrefix = commonPrefix(fullName);
+        if (commonPrefix != null) return removeDot(fullName.substring(commonPrefix.length()));
+        else return fullName;
+    }
+    
+    private static String removeDot(String noPackageName) {
+        if (noPackageName.startsWith(".")) return noPackageName.substring(1);
+        else return noPackageName;
+    }
+    
     private static String simplifiedName(Class<?> class_) {
-        String name = class_.getName();
-        if (class_.getPackageName().isEmpty()) name = "<root-package>."+name;
-        else if (commonName(name)) name = noPackageName(class_);
-        return name;
+        String fullName = class_.getName();
+        if (commonPrefix(fullName) != null) return noPackageName(class_);
+        else return fullName;
     }
     
     private static String noPackageName(Class<?> class_) {
-        String noPackageName = class_.getName().substring(class_.getPackageName().length());
-        if (noPackageName.startsWith(".")) noPackageName = noPackageName.substring(1);
-        return noPackageName;
+        return removeDot(class_.getName().substring(class_.getPackageName().length()));
     }
     
-    private static boolean commonName(String name) {
-        for (String commonPrefix : commonPrefixes) if (name.startsWith(commonPrefix)) return true;
-        return false;
+    private static @Nullable String commonPrefix(String name) {
+        for (String commonPrefix : commonPrefixes) if (name.startsWith(commonPrefix)) return commonPrefix;
+        return null;
     }
     
     private static String arrayObjectToString(@NotNull Object object) {
-        if (object instanceof Object []) return simplifiedName(object.getClass().getComponentType())+"[]{   "+ Arrays.stream(((Object[]) object))
-            .map(AncapDebug::stringValueOf)
-            .collect(Collectors.joining(", "))+"   }";
+        if (object instanceof Object[]) return
+            debugName(object.getClass().getComponentType()) +
+            "[]{   "+streamElementsString(Arrays.stream(((Object[]) object)))+"   }";
         else if (object instanceof boolean[]) return "boolean[]{   "+pwacs(ArrayUtils.toObject( (boolean[]) object))+"   }";
         else if (object instanceof   short[]) return   "short[]{   "+pwacs(ArrayUtils.toObject(   (short[]) object))+"   }";
         else if (object instanceof    byte[]) return    "byte[]{   "+pwacs(ArrayUtils.toObject(    (byte[]) object))+"   }";
@@ -169,6 +192,12 @@ public class AncapDebug {
         else if (object instanceof   float[]) return   "float[]{   "+pwacs(ArrayUtils.toObject(   (float[]) object))+"   }";
         else if (object instanceof  double[]) return  "double[]{   "+pwacs(ArrayUtils.toObject(  (double[]) object))+"   }";
         else throw new IllegalStateException();
+    }
+    
+    private static String streamElementsString(Stream<Object> stream) {
+        return stream
+            .map(AncapDebug::stringValueOf)
+            .collect(Collectors.joining(", "));
     }
     
     /**
