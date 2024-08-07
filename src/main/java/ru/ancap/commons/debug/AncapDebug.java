@@ -255,14 +255,14 @@ public class AncapDebug {
         if (object instanceof Object[]) return
             debugName(object.getClass().getComponentType()) +
             "[]{   "+streamElementsString(Arrays.stream(((Object[]) object)))+"   }";
-        else if (object instanceof boolean[]) return "boolean[]{   "+pwacs(ArrayUtils.toObject( (boolean[]) object))+"   }";
-        else if (object instanceof   short[]) return   "short[]{   "+pwacs(ArrayUtils.toObject(   (short[]) object))+"   }";
-        else if (object instanceof    byte[]) return    "byte[]{   "+pwacs(ArrayUtils.toObject(    (byte[]) object))+"   }";
-        else if (object instanceof    char[]) return    "char[]{   "+pwacs(ArrayUtils.toObject(    (char[]) object))+"   }";
-        else if (object instanceof     int[]) return     "int[]{   "+pwacs(ArrayUtils.toObject(     (int[]) object))+"   }";
-        else if (object instanceof    long[]) return    "long[]{   "+pwacs(ArrayUtils.toObject(    (long[]) object))+"   }";
-        else if (object instanceof   float[]) return   "float[]{   "+pwacs(ArrayUtils.toObject(   (float[]) object))+"   }";
-        else if (object instanceof  double[]) return  "double[]{   "+pwacs(ArrayUtils.toObject(  (double[]) object))+"   }";
+        else if (object instanceof boolean[]) return "boolean[]{"+pwacs(ArrayUtils.toObject( (boolean[]) object))+"}";
+        else if (object instanceof   short[]) return   "short[]{"+pwacs(ArrayUtils.toObject(   (short[]) object))+"}";
+        else if (object instanceof    byte[]) return    "byte[]{"+pwacs(ArrayUtils.toObject(    (byte[]) object))+"}";
+        else if (object instanceof    char[]) return    "char[]{"+pwacs(ArrayUtils.toObject(    (char[]) object))+"}";
+        else if (object instanceof     int[]) return     "int[]{"+pwacs(ArrayUtils.toObject(     (int[]) object))+"}";
+        else if (object instanceof    long[]) return    "long[]{"+pwacs(ArrayUtils.toObject(    (long[]) object))+"}";
+        else if (object instanceof   float[]) return   "float[]{"+pwacs(ArrayUtils.toObject(   (float[]) object))+"}";
+        else if (object instanceof  double[]) return  "double[]{"+pwacs(ArrayUtils.toObject(  (double[]) object))+"}";
         else throw new IllegalStateException();
     }
     
@@ -279,7 +279,7 @@ public class AncapDebug {
     private static <T> String pwacs(T... array) {
         return Arrays.stream(array)
             .map(String::valueOf)
-            .collect(Collectors.joining(", "));
+            .collect(Collectors.joining(","));
     }
     
     private static void simpleDebug(String string) {
