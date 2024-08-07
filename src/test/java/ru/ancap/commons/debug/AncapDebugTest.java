@@ -30,18 +30,18 @@ public class AncapDebugTest {
         
         debug(name("postformat"), named("foo", postformat(
             "<1> \"ru.ancap.eggs.quest.QuestController$QuestProgression{  " +
-                "QuestProgression[filledItems=[TaskProgression[task=Task[grade=" +
-                "ResourceGrade(id=epic, nameFormat=StyleImpl{color=null, obfu" +
-                "scated=not_set, bold=not_set, strikethrough={not_set}, underlined" +
-                "=not_set, italic=not_set, clickEvent=null, hoverEvent=null, " +
-                "insertion=null, font=null}), material=DIAMOND], amount=56], " +
-                "TaskProgression[task=Task[grade=ResourceGrade(id=epic, nameFormat=StyleImpl{color=null, " +
-                "obfuscated=not_set, bold=not_set, strikethrough=not_set, underlined=not_set, italic=not_set, " +
-                "clickEvent=null, hoverEvent=null, insertion=null, font=null}), material=DIAMOND], amount=59], " +
-                "TaskProgression[task=Task[grade=ResourceGrade(id=rare, nameFormat=StyleImpl{color=null, obfuscated=not_set, " +
-                "bold=not_set, strikethrough=not_set, underlined=not_set, italic=not_set, clickEvent=null, " +
-                "hoverEvent=null, insertion=null, font=null}), material=IRON_INGOT], amount=61]], requiredItems=18]  " +
-                "}\""
+            "QuestProgression[filledItems=[TaskProgression[task=Task[grade=" +
+            "ResourceGrade(id=epic, nameFormat=StyleImpl{color=null, obfu" +
+            "scated=not_set, bold=not_set, strikethrough={not_set}, underlined" +
+            "=not_set, italic=not_set, clickEvent=null, hoverEvent=null, " +
+            "insertion=null, font=null}), material=DIAMOND], amount=56], " +
+            "TaskProgression[task=Task[grade=ResourceGrade(id=epic, nameFormat=StyleImpl{color=null, " +
+            "obfuscated=not_set, bold=not_set, strikethrough=not_set, underlined=not_set, italic=not_set, " +
+            "clickEvent=null, hoverEvent=null, insertion=null, font=null}), material=DIAMOND], amount=59], " +
+            "TaskProgression[task=Task[grade=ResourceGrade(id=rare, nameFormat=StyleImpl{color=null, obfuscated=not_set, " +
+            "bold=not_set, strikethrough=not_set, underlined=not_set, italic=not_set, clickEvent=null, " +
+            "hoverEvent=null, insertion=null, font=null}), material=IRON_INGOT], amount=61]], requiredItems=18]  " +
+            "}\""
         )));
         
         Assertions.assertTrue(testThrough());
