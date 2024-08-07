@@ -53,7 +53,6 @@ public class AncapDebug {
     
     // TODO сериализация
     // TODO отступы
-    // TODO name()
     
     public static volatile Consumer<String> OUTPUT_CONSUMER = System.out::println;
     
@@ -70,11 +69,27 @@ public class AncapDebug {
     }
     
     /**
+     * Magic method to name debug.
+     * <p>
+     * Example:
+     * <pre>
+     * debug(name("fizz"), foo, bar));
+     * </pre>
+     * will output<br>
+     * <pre>
+     * === FIZZ DEBUG ===
+     * <0> "%FOO DATA%"
+     * <1> "%BAR_DATA%"
+     * </pre>
+     */
+    public static Object name(String name) { return new Name(name); }
+    
+    /**
      * Magic method to name line.
      * <p>
      * Example:
      * <pre>
-     * debug(named("foo", foo), bar)
+     * debug(named("foo", foo), bar);
      * </pre>
      * will output<br>
      * <pre>
@@ -90,7 +105,7 @@ public class AncapDebug {
      * <p>
      * Example:
      * <pre>
-     * debug(inline(foo, bar))
+     * debug(inline(foo, bar));
      * </pre>
      * will output<br>
      * <pre>
@@ -107,19 +122,34 @@ public class AncapDebug {
             .map(StackTraceElement::toString)
             .orElse("null");
         StringBuilder debug = new StringBuilder();
-        debug.append("=== DEBUG in ").append(callerInformation).append(" ===");
+        DebugObjectsState debugObjectsState = readDebugObjectsState(objects);
+        debugObjectsState.globalName().ifPresentOrElse(
+            (name) -> debug.append("=== ").append(name.toUpperCase()).append(" DEBUG ==="),
+            () -> debug.append("=== DEBUG in ").append(callerInformation).append(" ===")
+        );
         debug.append("\n");
+        debug.append(debugObjectsState.builder());
         AncapDebug.simpleDebug(new String(debug));
-        if (objects == null) debug.append("null");
-        else if (objects.length == 0) debug.append("no objects to inspect provided");
+    }
+    
+    private static DebugObjectsState readDebugObjectsState(Object[] objects) {
+        @Nullable String name = null;
+        StringBuilder builder = new StringBuilder();
+        if (objects == null) builder.append("null");
+        else if (objects.length == 0) builder.append("no objects to inspect provided");
         else for (int i = 0; i < objects.length; i++) {
             Object object = objects[i];
-            debug.append("<").append(i).append("> ");
-            debug.append(stringValueOf(object));
-            if (i < objects.length - 1) debug.append("\n");
+            if (object instanceof AncapDebug.Name nameMarker) name = nameMarker.name();
+            else {
+                builder.append("<").append(i).append("> ");
+                builder.append(stringValueOf(object));
+                if (i < objects.length - 1) builder.append("\n");
+            }
         }
-        AncapDebug.soloDebug(new String(debug));
+        return new DebugObjectsState(Optional.ofNullable(name), builder);
     }
+    
+    private record DebugObjectsState(Optional<String> globalName, StringBuilder builder) {}
     
     public static void debugArray0(Optional<StackTraceElement> caller, @Nullable Object @Nullable[] array) {
         debug0(caller, new Object[]{array});
@@ -134,6 +164,7 @@ public class AncapDebug {
     }
     
     private record Named(String name, Object object) { }
+    private record Name(String name) { }
     private interface Raw {}
     private record Inline(Object[] objects) implements Raw {
         

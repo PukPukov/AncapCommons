@@ -18,8 +18,11 @@ public class AncapDebugTest {
         
         debug(named("first", List.of("a", "b", 3)), new Object[]{"foo", "bar", new int[]{3, 4, 5}});
         debugArray(new Object[]{"foo", "bar", new int[]{3, 4, 5}});
+        
         debug(true, false);
         debug(inline(true, false));
+        
+        debug(name("fizz"), true, false);
         
         testThrough();
     }
