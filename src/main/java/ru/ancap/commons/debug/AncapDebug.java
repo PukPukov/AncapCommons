@@ -158,6 +158,8 @@ public class AncapDebug {
         else if (object instanceof   Double    double_)    return double_+"D";
         else if (object instanceof  Integer    integer)    return integer+"i";
         
+        else if (object instanceof   String     string)    return InMarks.wrap(string);
+        
         else if (object instanceof Raw raw)                return raw.toString();
         else if (object instanceof AncapDebug.Named named) return named.name()+": "+stringValueOf(named.object());
         else if (object instanceof Iterable<?> iterable)   return
