@@ -90,7 +90,7 @@ public class AncapDebug {
             Object object = objects[i];
             debug.append("<").append(i).append("> ");
             debug.append(stringValueOf(object));
-            debug.append("\n");
+            if (i < objects.length - 1) debug.append("\n");
         }
         AncapDebug.soloDebug(new String(debug));
     }
