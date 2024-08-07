@@ -126,8 +126,14 @@ public class AncapDebug {
     private static String simplifiedName(Class<?> class_) {
         String name = class_.getName();
         if (class_.getPackageName().isEmpty()) name = "<root-package>."+name;
-        else if (commonName(name)) name = class_.getSimpleName();
+        else if (commonName(name)) name = noPackageName(class_);
         return name;
+    }
+    
+    private static String noPackageName(Class<?> class_) {
+        String noPackageName = class_.getName().substring(class_.getPackageName().length());
+        if (noPackageName.startsWith(".")) noPackageName = noPackageName.substring(1);
+        return noPackageName;
     }
     
     private static boolean commonName(String name) {
