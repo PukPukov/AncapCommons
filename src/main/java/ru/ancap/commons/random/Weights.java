@@ -2,6 +2,7 @@ package ru.ancap.commons.random;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.random.RandomGenerator;
 
 @RequiredArgsConstructor
 @Accessors(fluent = true) @Getter
+@ToString
 public class Weights<T> {
     
     private final List<Weight<T>> weights;
