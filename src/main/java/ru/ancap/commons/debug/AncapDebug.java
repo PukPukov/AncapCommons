@@ -198,6 +198,10 @@ public class AncapDebug {
     private static String stringValueOf(@Nullable Object object) {
         if (object == null)                                          return InMarks.wrap("null");
         
+        else if (object instanceof Raw raw)                          return raw.toString();
+        else if (object instanceof AncapDebug.Named named)           return named.name()+": "+streamElementsString(Arrays.stream(named.objects()));
+        else if (object instanceof AncapDebug.Postformat postformat) return postFormat(streamElementsString(Arrays.stream(postformat.objects())));
+        
         else if (object instanceof Character character)              return "'"+character.toString()+"'";
         else if (object instanceof  Boolean   boolean_)              return boolean_.toString();
         else if (object instanceof    Short     short_)              return short_+"s";
@@ -206,17 +210,16 @@ public class AncapDebug {
         else if (object instanceof    Float     float_)              return float_+"f";
         else if (object instanceof   Double    double_)              return double_+"D";
         else if (object instanceof  Integer    integer)              return integer+"i";
-        
         else if (object instanceof   String     string)              return InMarks.wrap(string);
         
-        else if (object instanceof Raw raw)                          return raw.toString();
-        else if (object instanceof AncapDebug.Named named)           return named.name()+": "+streamElementsString(Arrays.stream(named.objects()));
-        else if (object instanceof AncapDebug.Postformat postformat) return postFormat(streamElementsString(Arrays.stream(postformat.objects())));
         else if (object instanceof Iterable<?> iterable)             return
-            debugName(iterable.getClass())+
-            "{   "+streamElementsString(StreamIterator.wrap(iterable.iterator())
-                .map(Object.class::cast))+"   }";
+            debugName(iterable.getClass()) +
+            "{   " +
+            streamElementsString(StreamIterator.wrap(iterable.iterator())
+                .map(Object.class::cast)) +
+            "   }";
         else if (object.getClass().isArray())                        return InMarks.wrap(arrayObjectToString(object));
+        
         else                                                         return InMarks.wrap(debugName(object.getClass())+"{  "+object.toString()+"  }");
     }
     
