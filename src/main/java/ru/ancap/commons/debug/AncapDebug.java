@@ -2,6 +2,7 @@ package ru.ancap.commons.debug;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import net.jcip.annotations.ThreadSafe;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,10 +15,11 @@ import java.util.stream.Collectors;
 /**
  * Marker class to use it for leaving debug messages and easily find them with "find usages" in any IDE.
  */
+@ThreadSafe
 @ToString @EqualsAndHashCode
 public class AncapDebug {
     
-    public static Consumer<String> OUTPUT_CONSUMER = string -> System.out.println("DEBUG "+string);
+    public static volatile Consumer<String> OUTPUT_CONSUMER = string -> System.out.println("DEBUG "+string);
     
     public static <T> T debugThrough(@Nullable T main, Object... additional) {
         var objects = new ArrayList<>();
