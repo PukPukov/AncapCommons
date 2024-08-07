@@ -107,13 +107,32 @@ public class AncapDebug {
         else                                          return "\""+simplifiedName(object.getClass())+"{  "+object+"  }"+"\"";
     }
     
-    private static final String javaLangPrefix = "java.lang.";
+    /**
+     * Should be used wisely. If you will add packages that have class name intersections with existing packages,
+     * it can confuse you.
+     */
+    public static final List<String> commonPrefixes = new CopyOnWriteArrayList<>(List.of(
+        "java.lang",
+        "java.util",
+        "java.io",
+        "java.math",
+        "java.net",
+        "java.nio",
+        "java.security",
+        "java.text",
+        "java.time"
+    ));
     
     private static String simplifiedName(Class<?> class_) {
         String name = class_.getName();
         if (class_.getPackageName().isEmpty()) name = "<root-package>."+name;
-        else if (name.startsWith(javaLangPrefix)) name = class_.getSimpleName();
+        else if (commonName(name)) name = class_.getSimpleName();
         return name;
+    }
+    
+    private static boolean commonName(String name) {
+        for (String commonPrefix : commonPrefixes) if (name.startsWith(commonPrefix)) return true;
+        return false;
     }
     
     private static String arrayObjectToString(@NotNull Object object) {
