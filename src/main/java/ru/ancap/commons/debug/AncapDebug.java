@@ -110,10 +110,10 @@ public class AncapDebug {
     private static final String javaLangPrefix = "java.lang.";
     
     private static String simplifiedName(Class<?> class_) {
-        String fullName = class_.getName();
-        if (class_.getPackageName().isEmpty()) fullName = "<root-package>."+fullName;
-        else if (fullName.startsWith(javaLangPrefix)) fullName = fullName.substring(javaLangPrefix.length());
-        return fullName;
+        String name = class_.getName();
+        if (class_.getPackageName().isEmpty()) name = "<root-package>."+name;
+        else if (name.startsWith(javaLangPrefix)) name = class_.getSimpleName();
+        return name;
     }
     
     private static String arrayObjectToString(@NotNull Object object) {
