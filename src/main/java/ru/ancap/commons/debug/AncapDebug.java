@@ -8,6 +8,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ancap.commons.DynData;
+import ru.ancap.commons.InMarks;
 import ru.ancap.commons.iterable.StreamIterator;
 
 import java.lang.reflect.Method;
@@ -152,8 +153,8 @@ public class AncapDebug {
             debugName(iterable.getClass())+
             "{   "+streamElementsString(StreamIterator.wrap(iterable.iterator())
                 .map(Object.class::cast))+"   }";
-        else if (object.getClass().isArray())               return "\""+arrayObjectToString(object)+"\"";
-        else                                                return "\""+debugName(object.getClass())+"{  "+object.toString()+"  }"+"\"";
+        else if (object.getClass().isArray())               return InMarks.wrap(arrayObjectToString(object));
+        else                                                return InMarks.wrap(debugName(object.getClass())+"{  "+object.toString()+"  }");
     }
     
     /**
