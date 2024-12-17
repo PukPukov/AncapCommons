@@ -229,9 +229,9 @@ public class AncapDebug {
             streamElementsString(StreamIterator.wrap(iterable.iterator())
                 .map(Object.class::cast)) +
             "   }";
-        else if (object.getClass().isArray())                        return InMarks.wrap(arrayObjectToString(object));
+        else if (object.getClass().isArray())                        return arrayObjectToString(object);
         
-        else                                                         return InMarks.wrap(debugName(object.getClass())+"{  "+object.toString()+"  }");
+        else                                                         return debugName(object.getClass())+"{  "+object.toString()+"  }";
     }
     
     private static final List<String> commonPrefixes = new CopyOnWriteArrayList<>(List.of(
