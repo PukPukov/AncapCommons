@@ -26,9 +26,7 @@ public class SimpleEventBus<EVENT> implements Instructor<EVENT>, EventDispatcher
     
     @Override
     public void dispatch(EVENT event) {
-        for (Consumer<EVENT> listener : this.listeners) {
-            listener.accept(event);
-        }
+        for (Consumer<EVENT> listener : this.listeners) listener.accept(event);
     }
     
 }
