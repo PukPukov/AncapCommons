@@ -1,4 +1,4 @@
-package ru.ancap.commons;
+package ru.ancap.commons.documentation;
 
 /**
  * Marker for classes that is not working without proper implementation/setup, but nothing really prevents users from using class without implementation.<br><br>
