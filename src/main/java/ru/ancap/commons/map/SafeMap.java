@@ -26,10 +26,11 @@ public class SafeMap<K, V> implements Map<K, V> {
     public static class Builder<K, V> {
         
         private final Map<K, V> base;
-        private @Nullable Supplier<V> guarantor;
+        private @Nullable Function<K, V> guarantor;
         private @Nullable MapGC<K> gc;
         
-        public Builder<K, V> guaranteed(Supplier<V> guarantor) { this.guarantor = guarantor; return this; }
+        public Builder<K, V> guaranteed(Supplier<V> guarantor) { this.guarantor = (__) -> guarantor.get(); return this; }
+        public Builder<K, V> guaranteedF(Function<K, V> guarantor) { this.guarantor = guarantor; return this; }
         public Builder<K, V> collectGarbage(MapGC<K> gc) { this.gc = gc; return this; }
         
         public SafeMap<K, V> build() {
@@ -38,7 +39,7 @@ public class SafeMap<K, V> implements Map<K, V> {
                 key -> {
                     V value = this.base.get(key);
                     if (value == null) {
-                        value = this.guarantor.get();
+                        value = this.guarantor.apply(key);
                         this.base.put(key, value);
                     }
                     return value;

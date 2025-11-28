@@ -17,7 +17,7 @@ public class SafeMapTest {
     public void test() {
         SimpleEventBus<Integer> deletions = new SimpleEventBus<>();
         SafeMap<String, List<String>> map = SafeMap.<String, List<String>>builder()
-            .guaranteed(ArrayList::new)
+            .guaranteed((ArrayList::new))
             .collectGarbage( deletions
                 .map(Object::toString)
                 .as(MapGC::new)
