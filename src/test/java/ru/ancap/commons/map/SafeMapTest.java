@@ -1,6 +1,7 @@
 package ru.ancap.commons.map;
 
 import org.junit.jupiter.api.Test;
+import ru.ancap.commons.instructor.EventBus;
 import ru.ancap.commons.instructor.SimpleEventBus;
 
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ public class SafeMapTest {
     
     @Test
     public void test() {
-        SimpleEventBus<Integer> deletions = new SimpleEventBus<>();
+        EventBus<Integer> deletions = new SimpleEventBus<>();
         SafeMap<String, List<String>> map = SafeMap.<String, List<String>>builder()
-            .guaranteed((ArrayList::new))
-            .collectGarbage( deletions
+            .guaranteed(ArrayList::new)
+            .collectGarbage(deletions
                 .map(Object::toString)
                 .as(MapGC::new)
             )
