@@ -23,4 +23,8 @@
 
 - JDK 17
 - Maven 3
-- Локально установленный puklapom
+- Локально установленный puklapom v1.3.3
+
+### Команда
+
+`mvn clean install`
