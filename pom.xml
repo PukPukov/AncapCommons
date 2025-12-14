@@ -7,13 +7,13 @@
     <parent>
         <groupId>ru.ancap</groupId>
         <artifactId>puklapom</artifactId>
-        <version>1.3.2</version>
+        <version>1.3.3</version>
     </parent>
     
     <packaging>takari-jar</packaging>
 
     <artifactId>AncapCommons</artifactId>
-    <version>1.9.20</version>
+    <version>1.9.21</version>
 
     <properties>
         <java.version>17</java.version>
