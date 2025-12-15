@@ -13,7 +13,15 @@
     <packaging>takari-jar</packaging>
 
     <artifactId>AncapCommons</artifactId>
-    <version>1.9.21</version>
+    <version>1.9.22</version>
+
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <properties>
         <java.version>17</java.version>
