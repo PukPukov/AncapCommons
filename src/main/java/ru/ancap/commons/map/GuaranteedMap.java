@@ -16,6 +16,7 @@ import java.util.function.Supplier;
 public class GuaranteedMap<K, V> implements Map<K, V> {
     
     private final SafeMap<K, V> base; // two fields are required due to lack of @Delegate support in lombok
+                                      // What?
     @Delegate
     private final Map<K, V> baseDelegate;
     

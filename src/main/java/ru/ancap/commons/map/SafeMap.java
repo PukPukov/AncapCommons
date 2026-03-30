@@ -19,6 +19,10 @@ import java.util.function.Supplier;
 @ToString @EqualsAndHashCode
 public class SafeMap<K, V> implements Map<K, V> {
     
+    public static <K, V> SafeMap<K, V> guaranteed(Function<K, V> guarantor) {
+        return SafeMap.<K, V>builder().guaranteedF(guarantor).build();
+    }
+    
     public static <K, V> Builder<K, V> builder() { return new Builder<>(new ConcurrentHashMap<>()); }
     public static <K, V> Builder<K, V> builder(Map<K, V> base) { return new Builder<>(base); } 
 
