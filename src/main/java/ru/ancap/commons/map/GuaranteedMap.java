@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Delegate;
 import org.jetbrains.annotations.NotNull;
+import ru.ancap.commons.null_.NnulMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString @EqualsAndHashCode
-public class GuaranteedMap<K, V> implements Map<K, V> {
+public class GuaranteedMap<K, V> implements NnulMap<K, V> {
     
     private final SafeMap<K, V> base; // two fields are required due to lack of @Delegate support in lombok
                                       // What?
