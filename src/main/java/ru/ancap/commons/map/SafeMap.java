@@ -8,6 +8,7 @@ import lombok.experimental.Delegate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ancap.commons.declarative.flow.Branch;
+import ru.ancap.commons.null_.NnulMap;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -19,8 +20,8 @@ import java.util.function.Supplier;
 @ToString @EqualsAndHashCode
 public class SafeMap<K, V> implements Map<K, V> {
     
-    public static <K, V> SafeMap<K, V> guaranteed(Function<K, V> guarantor) {
-        return SafeMap.<K, V>builder().guaranteedF(guarantor).build();
+    public static <K, V> NnulMap<K, V> guaranteed(Function<K, V> guarantor) {
+        return new GuaranteedMap<>(SafeMap.<K, V>builder().guaranteedF(guarantor).build());
     }
     
     public static <K, V> Builder<K, V> builder() { return new Builder<>(new ConcurrentHashMap<>()); }
