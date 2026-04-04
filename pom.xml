@@ -13,7 +13,7 @@
     <packaging>takari-jar</packaging>
 
     <artifactId>AncapCommons</artifactId>
-    <version>1.9.25</version>
+    <version>1.9.26</version>
 
     <licenses>
         <license>

@@ -1,9 +1,6 @@
 package ru.ancap.commons.map;
 
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Delegate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -20,7 +17,7 @@ import java.util.function.Supplier;
 @ToString @EqualsAndHashCode
 public class SafeMap<K, V> implements Map<K, V> {
     
-    public static <K, V> NnulMap<K, V> guaranteed(Function<K, V> guarantor) {
+    public static <K, V> GuaranteedMap<K, V> guaranteed(Function<K, V> guarantor) {
         return new GuaranteedMap<>(SafeMap.<K, V>builder().guaranteedF(guarantor).build());
     }
     
@@ -58,7 +55,7 @@ public class SafeMap<K, V> implements Map<K, V> {
     }
     
     @Delegate(excludes = LombokExclude.class)
-    private final Map<K, V> base;
+    private final @Getter Map<K, V> base;
     private final Function<K, V> getStrategy;
 
     @Override
