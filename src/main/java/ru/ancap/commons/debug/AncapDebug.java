@@ -152,9 +152,11 @@ public class AncapDebug {
             (name) -> debug.append("=== ").append(name.toUpperCase()).append(" DEBUG ==="),
             () -> debug.append("=== DEBUG in ").append(callerInformation).append(" ===")
         );
-        debug.append("\n");
-        debug.append(debugObjectsState.builder());
-        AncapDebug.simpleDebug(new String(debug));
+        if (!debugObjectsState.builder().isEmpty()) {
+            debug.append("\n");
+            debug.append(debugObjectsState.builder());
+        }
+        output(new String(debug));
     }
     
     private static DebugObjectsState readDebugObjectsState(Object[] objects) {
@@ -304,7 +306,7 @@ public class AncapDebug {
             .collect(Collectors.joining(","));
     }
     
-    private static void simpleDebug(String string) {
+    private static void output(String string) {
         AncapDebug.OUTPUT_CONSUMER.accept(string);
     }
     
