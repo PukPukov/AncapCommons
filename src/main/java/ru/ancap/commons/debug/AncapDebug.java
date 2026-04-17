@@ -55,7 +55,10 @@ public class AncapDebug {
     
     // TODO сериализация
     
-    public static volatile Consumer<String> OUTPUT_CONSUMER = System.out::println;
+    public static volatile Consumer<String> OUTPUT_CONSUMER = str -> {
+        System.out.println(str);
+        System.out.flush();
+    };
     
     public static void debug(@Nullable Object @Nullable... objects) {
         debug0(caller(), objects);
