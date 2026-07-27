@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>ru.ancap</groupId>
+        <groupId>ru.pukpukov</groupId>
         <artifactId>puklapom</artifactId>
-        <version>1.3.3</version>
+        <version>1.4.8.2</version>
     </parent>
-    
-    <packaging>takari-jar</packaging>
+
+    <packaging>${jarLifecycleType}</packaging>
 
     <artifactId>AncapCommons</artifactId>
-    <version>1.9.28</version>
+    <version>${revision}</version>
 
     <licenses>
         <license>
@@ -29,6 +29,28 @@
 
     <build>
         <finalName>ancap-commons-v${project.version}</finalName>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                
+                <configuration>
+                    <annotationProcessorPaths combine.self="override">
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+
+                    <annotationProcessors combine.self="override">
+                        <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</annotationProcessor>
+                        <annotationProcessor>lombok.launch.AnnotationProcessorHider$ClaimingProcessor</annotationProcessor>
+                    </annotationProcessors>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     
     <dependencies>
