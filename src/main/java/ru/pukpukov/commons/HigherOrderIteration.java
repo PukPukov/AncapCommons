@@ -1,33 +1,40 @@
 package ru.pukpukov.commons;
 
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
-import java.util.function.Supplier;
 
 /**
  * Iterates through numbers like in positional number system, but with different caps for different digits.
+ * Using this approach, it is possible to achieve higher-order iteration: in plain words, loop of loop nesting. 
  * <p>
  * Single thread principle. In the sense of threading should be considered as something similar
  * to for loop and Iterator class that only works on single thread stack. It's not thread unsafe, 
- * it isn't intended to use outside of single stack at all.
+ * it doesn't make sense to use it outside of single stack at all.
  * <p>
- * The easy relation to not get confused with ordering of caps and results is that cap capping the
+ * The easy relation to not get confused with ordering of caps and results is that cap is capping the
  * same digit index as it has own. <br>
  * For example caps[2] = 3 will make digit at index 2 from results array that get() method output 
  * capped at 3 and not bigger than 2.
  * <p>
- * Digits ordered from smallest to largest, i.e. first
+ * Digits are ordered from smallest to largest, i.e. first
  * will be increased value at index 0, and the last index of array will be incremented last.
  * <p>
  * Example of output when dimensions are 3 and caps are 2, 3, 3: (triple semicolon means new call) <br>
  * 0, 0, 0;;;1, 0, 0;;;0, 1, 0;;;1, 1, 0;;;0, 2, 0;;;1, 2, 0;;;0, 0, 1;;;1, 0, 1;;;etc... <br>
- * and the latest is 1, 2, 2, after its null returned for every call, but i tested only for one call because there is
- * no sense to make a lot of calls when you know there is nothing next.
+ * and the latest is 1, 2, 2, then it loops back to 0 0 0. The method next() returns false if it did
+ * loop back.
+ * <p>
+ * The expected way to use this class is do-while loop:
+ * {@snippet :
+ * var iter = new HigherOrderIteration(3, new int[]{2, 3, 3});
+ * do {
+ *   doSomethingWith(iter.__current);
+ * } while (iter.next());
+ * }
  */
 @RequiredArgsConstructor
-public class NumberIterator implements Supplier<int@Nullable[]> {
+public class HigherOrderIteration {
     
     /**
      * Speaking easily, it is maximum amount of digits. When iteration try to go to digit larger 
@@ -45,9 +52,22 @@ public class NumberIterator implements Supplier<int@Nullable[]> {
     private final int[] caps;
     
     /**
+     * Current element.
+     * <p>
+     * Digits ordered from smallest to largest, i.e. first
+     * will be increased value at index 0, and the last index of array will be incremented last.
+     * This is flyweight array and should not be modified!
+     */
+    public final int[] __current;
+    
+    public HigherOrderIteration(int dimensions, int[] caps) {
+        this(dimensions, caps.clone(), new int[dimensions]);
+    }
+    
+    /**
      * Use single cap for all dimensions.
      */
-    public NumberIterator(int dimensions, int cap) {
+    public HigherOrderIteration(int dimensions, int cap) {
         this(dimensions, filledArray(dimensions, cap));
     }
     
@@ -57,31 +77,17 @@ public class NumberIterator implements Supplier<int@Nullable[]> {
         return array;
     }
     
-    private int[] current;
-    
-    /**
-     * Returns next element.
-     * <p>
-     * Digits ordered from smallest to largest, i.e. first
-     * will be increased value at index 0, and the last index of array will be incremented last. Returned array should not be modified.
-     */
-    @Override
-    public int@Nullable[] get() {
-        if (current == null) {
-            current = new int[dimensions];
-            return current;
-        }
-        
+    public boolean next() {
         for (int i = 0; i < dimensions; i++) {
-            if (current[i] < caps[i] - 1) {
-                current[i]++;
-                return current;
+            if (__current[i] < caps[i] - 1) {
+                __current[i]++;
+                return true;
             } else {
-                current[i] = 0;
+                __current[i] = 0;
             }
         }
         
-        return null; // if this statement is reached, then, there is nothing next
+        return false; // if this statement is reached it means it did loop back to 0 0 0
     }
     
 }
