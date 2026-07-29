@@ -9,14 +9,9 @@ import ru.pukpukov.commons.debug.HandTest;
 import java.util.Random;
 
 /**
- * Classic copy-paste benchmark 
- * <p>
  * Result: <br>
- * <p style="margin-left: 5px">
  * <b>Morton64</b> pack: 22 ns, unpack: 15 ns <br>
  * <b>Bitwise</b> pack: 10 ns, unpack: 5 ns <br>
- * <b>Bitwise</b> is 2-3 times <b>faster</b>. Both has O(1) complexity.
- * </p>
  */
 @HandTest
 @RequiredArgsConstructor

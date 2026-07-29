@@ -1,93 +1,65 @@
 package ru.pukpukov.commons;
 
-import lombok.RequiredArgsConstructor;
-
-import java.util.Arrays;
-
 /**
- * Iterates through numbers like in positional number system, but with different caps for different digits.
- * Using this approach, it is possible to achieve higher-order iteration: in plain words, loop of loop nesting. 
+ * Iterates through numbers like in positional number system, but with different bases and caps for different
+ * digits. Using this approach, it is possible to achieve higher-order iteration: in plain words, loop of loop
+ * nesting. 
+ * <p> Single thread principle. In the sense of threading should be considered as something similar to for loop
+ * and Iterator class that only works on single thread stack. It's not thread unsafe, it doesn't make sense
+ * to use it from different threads at all, as it does not make sense to use for loop from different threads.
+ * <p> Both caps and __current have little-endian ordering. For example if caps[2] = 3, then __current[2] will
+ * always be less or equal to 3, and first will be increased value at index 0, and the last index of array will be
+ * incremented last.
  * <p>
- * Single thread principle. In the sense of threading should be considered as something similar
- * to for loop and Iterator class that only works on single thread stack. It's not thread unsafe, 
- * it doesn't make sense to use it outside of single stack at all.
- * <p>
- * The easy relation to not get confused with ordering of caps and results is that cap is capping the
- * same digit index as it has own. <br>
- * For example caps[2] = 3 will make digit at index 2 from results array that get() method output 
- * capped at 3 and not bigger than 2.
- * <p>
- * Digits are ordered from smallest to largest, i.e. first
- * will be increased value at index 0, and the last index of array will be incremented last.
- * <p>
- * Example of output when dimensions are 3 and caps are 2, 3, 3: (triple semicolon means new call) <br>
- * 0, 0, 0;;;1, 0, 0;;;0, 1, 0;;;1, 1, 0;;;0, 2, 0;;;1, 2, 0;;;0, 0, 1;;;1, 0, 1;;;etc... <br>
+ * Example of output when caps array is {1, 2, 2}: <br>
+ * 0, 0, 0 -> 1, 0, 0 -> 0, 1, 0 -> 1, 1, 0 -> 0, 2, 0 -> 1, 2, 0 -> 0, 0, 1 -> 1, 0, 1 -> etc... <br>
  * and the latest is 1, 2, 2, then it loops back to 0 0 0. The method next() returns false if it did
  * loop back.
  * <p>
+ * The length of bases and caps arrays corresponds to dimensions amount. You can think of dimensions amount as
+ * maximum amount of digits. When iteration try to go to digit larger than dimensions amount, the iteration is
+ * over.
+ * <p>
  * The expected way to use this class is do-while loop:
  * {@snippet :
- * var iter = new HigherOrderIteration(3, new int[]{2, 3, 3});
- * do {
+ * var iter = new HigherOrderIteration(new int[]{0, 0, 0}, new int[]{2, 3, 3}); do {
  *   doSomethingWith(iter.__current);
  * } while (iter.next());
  * }
  */
-@RequiredArgsConstructor
 public class HigherOrderIteration {
     
-    /**
-     * Speaking easily, it is maximum amount of digits. When iteration try to go to digit larger 
-     * than dimensions amount, the iteration is over and null is returned. Should be the same as length
-     * of caps array.
-     */
-    private final int dimensions;
+    private final int[] bases;
     
     /**
-     * Cap for every digit in order from the smallest digit to the largest (it means the first value in the array will
-     * be responsible for the cap of unit digits and the second, if the caps are decimal, will be responsible for tens).
-     * <p>
-     * The largest possible number in the digit is one smaller than cap for the digit. That means if the cap is 3 then maximum digit is 2.
+     * The largest possible number in the digit is the same as cap for the digit. That means if the cap is 3 then
+     * maximum digit is 3.
      */
     private final int[] caps;
     
     /**
-     * Current element.
-     * <p>
-     * Digits ordered from smallest to largest, i.e. first
-     * will be increased value at index 0, and the last index of array will be incremented last.
-     * This is flyweight array and should not be modified!
+     * Current element. This is flyweight array and should be used accordingly!
      */
     public final int[] __current;
     
-    public HigherOrderIteration(int dimensions, int[] caps) {
-        this(dimensions, caps.clone(), new int[dimensions]);
-    }
-    
-    /**
-     * Use single cap for all dimensions.
-     */
-    public HigherOrderIteration(int dimensions, int cap) {
-        this(dimensions, filledArray(dimensions, cap));
-    }
-    
-    private static int[] filledArray(int dimensions, int cap) {
-        var array = new int[dimensions];
-        Arrays.fill(array, cap);
-        return array;
+    public HigherOrderIteration(int[] bases, int[] caps) {
+        if (bases.length != caps.length) throw new IllegalStateException("Ambigous dimensions amount");
+        this.bases = bases.clone();
+        this.caps = caps.clone();
+        this.__current = new int[bases.length]; System.arraycopy(this.bases, 0, this.__current, 0, this.__current.length);
     }
     
     public boolean next() {
-        for (int i = 0; i < dimensions; i++) {
-            if (__current[i] < caps[i] - 1) {
-                __current[i]++;
+        for (int i = 0; i < this.caps.length; i++) {
+            if (this.__current[i] < this.caps[i]) {
+                this.__current[i]++;
                 return true;
             } else {
-                __current[i] = 0;
+                this.__current[i] = this.bases[i];
             }
         }
         
-        return false; // if this statement is reached it means it did loop back to 0 0 0
+        return false; // if this statement is reached it means it did loop back to base
     }
     
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public class IterableToArray {
 
     /**
-     * Not for runtime production — uses reflection and checks type for every entry since not optimized. Made to use in auto tests.
+     * Not for runtime production — uses reflection and checks type for every entry thus not optimized. Made to use in auto tests.
      */
     public static Object[] deepRecursiveReflective(Iterable<?> iterable) {
         Object[] array = shallow(iterable);

@@ -1,3 +1,4 @@
+// Original implementation by Andrew Kirilenko (https://github.com/gojuno/go.morton and https://github.com/gojuno/morton-java)
 package ru.pukpukov.commons.compact;
 
 import lombok.EqualsAndHashCode;

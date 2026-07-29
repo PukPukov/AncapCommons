@@ -12,7 +12,7 @@ public class HigherOrderIterationTest {
     
     @Test
     public void testIteratorWithCapsAndDimensions() {
-        HigherOrderIteration iterator1 = new HigherOrderIteration(3, new int[]{2, 3, 3});
+        HigherOrderIteration iterator1 = new HigherOrderIteration(new int[]{0, 0, 0}, new int[]{1, 2, 2});
         int[][] expected1 = {
             {0, 0, 0},
             {1, 0, 0},
@@ -35,7 +35,7 @@ public class HigherOrderIterationTest {
         };
         assertIteratorOutput(iterator1, expected1);
         
-        HigherOrderIteration iterator2 = new HigherOrderIteration(2, new int[]{3, 4});
+        HigherOrderIteration iterator2 = new HigherOrderIteration(new int[]{0, 0}, new int[]{2, 3});
         int[][] expected2 = {
             {0, 0},
             {1, 0},
@@ -53,7 +53,7 @@ public class HigherOrderIterationTest {
         
         assertIteratorOutput(iterator2, expected2);
         
-        HigherOrderIteration iterator3 = new HigherOrderIteration(4, new int[]{3, 2, 2, 2});
+        HigherOrderIteration iterator3 = new HigherOrderIteration(new int[]{0, 0, 0, 0}, new int[]{2, 1, 1, 1});
         int[][] expected3 = {
             {0, 0, 0, 0},
             {1, 0, 0, 0},
@@ -82,6 +82,18 @@ public class HigherOrderIterationTest {
         };
         
         assertIteratorOutput(iterator3, expected3);
+        
+        HigherOrderIteration iterator4 = new HigherOrderIteration(new int[]{6, 7}, new int[]{8, 8});
+        int[][] expected4 = {
+            {6, 7},
+            {7, 7},
+            {8, 7},
+            {6, 8},
+            {7, 8},
+            {8, 8}
+        };
+        
+        assertIteratorOutput(iterator4, expected4);
     }
     
     private void assertIteratorOutput(HigherOrderIteration iterator, int[][] expected) {

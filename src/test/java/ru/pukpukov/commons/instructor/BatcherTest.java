@@ -30,7 +30,7 @@ public class BatcherTest {
             int sleptTimes = 0;
             for (long i = 0; i < 512; i++) {
                 debug_i.incrementAndGet();
-                if (sleptTimes < 64) { // to not to make build too long
+                if (sleptTimes < 64) { // to not make build too long
                     Thread.sleep(1); sleptTimes++;
                 }
                 base.dispatch(i);
