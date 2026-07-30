@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Delegate;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.pukpukov.commons.null_.NnulMap;
@@ -36,7 +37,7 @@ public class GuaranteedMap<K, V> implements NnulMap<K, V> {
     public GuaranteedMap(SafeMap<K, V> base) {
         this.base = base;
         this.baseDelegate = base;
-        this.base2 = base.getBase();
+        this.base2 = base.base();
     }
     
     public @NotNull V getExplicitlyPlaced(Object key) {
@@ -46,6 +47,6 @@ public class GuaranteedMap<K, V> implements NnulMap<K, V> {
     // Мне кажется в один момент надо будет уже рефакторинг всех этих сейфмапов делать.
     public @Nullable V getExplicitlyPlacedNullable(K key) {
         return this.base2.get(key);
-    } 
+    }
     
 }

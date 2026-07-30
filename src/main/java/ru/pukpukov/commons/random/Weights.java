@@ -3,16 +3,13 @@ package ru.pukpukov.commons.random;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.random.RandomGenerator;
 
-@RequiredArgsConstructor
-@Accessors(fluent = true) @Getter
-@ToString
+@RequiredArgsConstructor @Getter @ToString
 public class Weights<T> {
     
     private final List<Weight<T>> weights;

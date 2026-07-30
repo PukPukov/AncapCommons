@@ -7,11 +7,11 @@ import lombok.ToString;
 public class EscapingBuffer {
     
     private boolean currentlyEscaped;
-    private boolean escapeNext;
+    private boolean escapeNext0; // 0 because of retarded lombok bug
     
     public void step() {
-        this.currentlyEscaped = this.escapeNext;
-        this.escapeNext = false;
+        this.currentlyEscaped = this.escapeNext0;
+        this.escapeNext0 = false;
     }
     
     public boolean currentlyEscaped() {
@@ -19,7 +19,7 @@ public class EscapingBuffer {
     }
     
     public void escapeNext() {
-        this.escapeNext = true;
+        this.escapeNext0 = true;
     }
     
 }

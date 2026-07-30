@@ -2,6 +2,7 @@ package ru.pukpukov.commons.map;
 
 import lombok.*;
 import lombok.experimental.Delegate;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.pukpukov.commons.declarative.flow.Branch;
@@ -77,5 +78,8 @@ public class SafeMap<K, V> implements Map<K, V> {
         T get(Object key);
         boolean containsKey(Object key);
     }
+    
+    
+    @ApiStatus.Obsolete public Map<K, V> getBase() { return this.base; }
     
 }
